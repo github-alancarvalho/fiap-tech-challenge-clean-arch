@@ -1,0 +1,41 @@
+server:
+  error:
+    include-stacktrace: ON_PARAM
+
+spring:
+  profiles:
+    active: "mariadb-techchallenge"
+  application:
+    name: FiapFood
+  datasource:
+    url: jdbc:mariadb://localhost:3336/fiaptechchallenge?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: rootroot
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+  mvc:
+    swagger:
+        enabler: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+
+info:
+  app: Fiap Food Tech Challenge
+  github: https://github.com/github-alancarvalho/fiap-tech-challenge.git
+
+jakarta:
+  persistence:
+    jdbc:
+      url: jdbc:mariadb://localhost:3336/fiaptechchallenge?allowPublicKeyRetrieval=true&useSSL=false

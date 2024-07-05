@@ -1,0 +1,48 @@
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  mariadb-techchallenge:
+    image: mariadb:11.1.3
+    container_name: mariadb-techchallenge
+    volumes:
+      - mariadbnew_data:/var/lib/mariadbnew
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      - MARIADB_ROOT_PASSWORD=rootroot
+      - MARIADB_DATABASE=tech-challenge
+      - MARIADB_USER=fiap
+      - MARIADB_PASSWORD=fiap
+    ports:
+      - "3336:3306"
+    restart: unless-stopped
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+  api:
+    image: fiapfood:latest
+    container_name: fiapfood
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mariadb-techchallenge
+    environment:
+      - MARIADB_DATABASE_ENDPOINT=mariadb-techchallenge:3306
+      - MARIADB_DATABASE=tech-challenge
+      - MARIADB_USER=fiap
+      - MARIADB_PASSWORD=fiap
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    networks:
+      - app-network
+    links:
+      - mariadb-techchallenge
+volumes:
+  mariadbnew_data: {}
