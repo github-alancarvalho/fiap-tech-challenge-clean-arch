@@ -25,9 +25,9 @@ public class ProdutoPutRequest {
     @Schema(description = "Descricao do produto,", example = "Sandubão com ovo e bacon")
     private String descricao;
 
-    @NotEmpty(message = "CategoriaEntity não pode ser vazia")
-    @NotNull(message = "CategoriaEntity não pode ser nula")
-    @Schema(description = "CategoriaEntity do produto.(1 - Lanche, 2 - Acompanhamento, 3 - Sobremesa, 4 - Bebida)", example = "1")
+    @NotEmpty(message = "CategoriaDataMapper não pode ser vazia")
+    @NotNull(message = "CategoriaDataMapper não pode ser nula")
+    @Schema(description = "CategoriaDataMapper do produto.(1 - Lanche, 2 - Acompanhamento, 3 - Sobremesa, 4 - Bebida)", example = "1")
     private Long categoriaId;
 
     @NotEmpty(message = "Preço não pode ser vazio")

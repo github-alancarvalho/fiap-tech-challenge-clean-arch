@@ -1,6 +1,6 @@
-package br.com.fiap.techchallenge.fiapfood._infra.gateway;
+package br.com.fiap.techchallenge.fiapfood._infra.gateway_apagar;
 
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.ConnectionPoolManager;
+import br.com.fiap.techchallenge.fiapfood.__db.ConnectionPoolManager;
 import jakarta.persistence.EntityManager;
 
 import java.io.Serializable;

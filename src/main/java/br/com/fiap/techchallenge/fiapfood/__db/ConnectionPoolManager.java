@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood._infra.persistence;
+package br.com.fiap.techchallenge.fiapfood.__db;
 
 import br.com.fiap.techchallenge.fiapfood.interfaces.DbConnection;
 import jakarta.persistence.EntityManagerFactory;

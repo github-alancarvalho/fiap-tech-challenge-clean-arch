@@ -66,7 +66,7 @@ Entrega: Quando o pedidoORM estiver pronto, o sistema deverá notificar o client
 Além das etapas do clienteORM, o estabelecimento precisa de um acesso administrativo:
 
 Gerenciar clientes: Com a identificação dos clientes o estabelecimento pode trabalhar em campanhas promocionais.
-Gerenciar produtos e categorias: Os produtos dispostos para escolha do clienteORM serão gerenciados pelo estabelecimento, definindo nome, categoriaEntity, preço, descrição e imagens. Para esse sistema teremos categorias fixas: Lanche, Acompanhamento, Bebida e Sobremesa.
+Gerenciar produtos e categorias: Os produtos dispostos para escolha do clienteORM serão gerenciados pelo estabelecimento, definindo nome, categoriaDataMapper, preço, descrição e imagens. Para esse sistema teremos categorias fixas: Lanche, Acompanhamento, Bebida e Sobremesa.
 
 As informações dispostas no sistema de pedidos precisarão ser gerenciadas pelo estabelecimento através de um painel administrativo.
 
@@ -81,7 +81,7 @@ APIs:
 - Cadastro do Cliente
 - Identificação do Cliente via CPF
 - Criar, editar e remover produtos
-- Buscar produtos por categoriaEntity
+- Buscar produtos por categoriaDataMapper
 - Fake checkout, apenas enviar os produtos escolhidos para a fila. O checkout é a finalização do pedidoORM.
 - Listar os pedidos
   Disponibilizar também o Swagger para consumo dessas APIs
@@ -256,7 +256,7 @@ http://localhost:8080/api/v1/ProdutosORM/buscarProdutoPorId?id=1
 
 http://localhost:8080/api/v1/ProdutosORM/buscarTudo
 
----------------Buscar produtos por categoriaEntity----------------
+---------------Buscar produtos por categoriaDataMapper----------------
 
 http://localhost:8080/api/v1/ProdutosORM/buscarProdutosPorCategoria?id=1
 

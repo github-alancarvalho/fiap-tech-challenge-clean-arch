@@ -1,8 +1,8 @@
-package br.com.fiap.techchallenge.fiapfood._infra.gateway;
+package br.com.fiap.techchallenge.fiapfood._infra.gateway_apagar;
 
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Categoria;
 import br.com.fiap.techchallenge.fiapfood.__gateways.CategoriaGateway;
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.CategoriaRepository;
+import br.com.fiap.techchallenge.fiapfood._infra.persistence.CategoriaRepository_apagar;
 import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.CategoriaMapper;
 
 import java.util.List;
@@ -10,18 +10,18 @@ import java.util.List;
 
 public class CategoriaGatewayJPA implements CategoriaGateway {
 
-    private final CategoriaRepository repository;
+    private final CategoriaRepository_apagar repository;
 
 
 //    private EntityManagerFactory emf;
 //    private EntityManager entityManager;
 
-//    public CategoriaGatewayJPA(CategoriaRepository repository, DbConnection connection){
+//    public CategoriaGatewayJPA(CategoriaRepository_apagar repository, DbConnection connection){
 //        this.repository = repository;
 //        this.emf = connection.getConnection();
 //    }
 
-    public CategoriaGatewayJPA(CategoriaRepository repository){
+    public CategoriaGatewayJPA(CategoriaRepository_apagar repository){
         this.repository = repository;
 //        this.emf = connection.getConnection();
     }
@@ -32,7 +32,7 @@ public class CategoriaGatewayJPA implements CategoriaGateway {
 
 //        entityManager = emf.createEntityManager();
 //        Query query = entityManager.createNamedQuery("findAllCategorias");
-//        List<CategoriaEntity> list = query.getResultList();
+//        List<CategoriaDataMapper> list = query.getResultList();
 //        entityManager.close();
         //return Optional.ofNullable(CategoriaMapper.mapListToEntity(list));
     }

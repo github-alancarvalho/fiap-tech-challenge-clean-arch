@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb;
 
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.ConnectionPoolManager;
+import br.com.fiap.techchallenge.fiapfood.__db.ConnectionPoolManager;
 import br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities.PedidoORM;
 import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.ClienteMapper;
 import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.ItemPedidoMapper;

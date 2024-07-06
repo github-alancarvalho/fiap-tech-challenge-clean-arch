@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb;
 
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.CategoriaEntity;
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.ConnectionPoolManager;
+import br.com.fiap.techchallenge.fiapfood.__db.CategoriaDataMapper;
+import br.com.fiap.techchallenge.fiapfood.__db.ConnectionPoolManager;
 import br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities.ProdutoORM;
 import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.ProdutoMapper;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Categoria;
@@ -26,8 +26,8 @@ public class ProdutoDao extends ConnectionPoolManager implements ProdutoReposito
         entityManager = getConnection().createEntityManager();
         entityManager.getTransaction().begin();
         ProdutoORM entity = ProdutoMapper.mapToEntity(produto);
-        CategoriaEntity categoriaEntity = entityManager.find(CategoriaEntity.class, entity.getCategoriaEntity().getId());
-        entity.setCategoria(categoriaEntity);
+        CategoriaDataMapper categoriaDataMapper = entityManager.find(CategoriaDataMapper.class, entity.getCategoriaEntity().getId());
+        entity.setCategoria(categoriaDataMapper);
         entityManager.persist(entity);
         entityManager.flush();
         entityManager.getTransaction().commit();
@@ -88,8 +88,8 @@ public class ProdutoDao extends ConnectionPoolManager implements ProdutoReposito
         entityManager = getConnection().createEntityManager();
         entityManager.getTransaction().begin();
         ProdutoORM entity = ProdutoMapper.mapToEntity(produto);
-        CategoriaEntity categoriaEntity = entityManager.find(CategoriaEntity.class, entity.getCategoriaEntity().getId());
-        entity.setCategoria(categoriaEntity);
+        CategoriaDataMapper categoriaDataMapper = entityManager.find(CategoriaDataMapper.class, entity.getCategoriaEntity().getId());
+        entity.setCategoria(categoriaDataMapper);
         entityManager.merge(entity);
         entityManager.flush();
         entityManager.getTransaction().commit();

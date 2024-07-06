@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood._infra.persistence;
+package br.com.fiap.techchallenge.fiapfood.__db;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -9,8 +9,8 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "categoria")
-@NamedQuery(name = "findAllCategorias", query = "SELECT c FROM CategoriaEntity c")
-public class CategoriaEntity implements Serializable {
+@NamedQuery(name = "findAllCategorias", query = "SELECT c FROM CategoriaDataMapper c")
+public class CategoriaDataMapper implements Serializable {
 
     @NotNull
     @Id
@@ -26,10 +26,10 @@ public class CategoriaEntity implements Serializable {
     @Column(name = "descricao", nullable = true)
     private String descricao;
 
-    public CategoriaEntity() {
+    public CategoriaDataMapper() {
     }
 
-    public CategoriaEntity(Long id, String nome, String descricao) {
+    public CategoriaDataMapper(Long id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;

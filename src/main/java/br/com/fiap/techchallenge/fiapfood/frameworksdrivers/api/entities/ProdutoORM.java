@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities;
 
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.CategoriaEntity;
+import br.com.fiap.techchallenge.fiapfood.__db.CategoriaDataMapper;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -33,7 +33,7 @@ public class ProdutoORM {
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     @JoinColumn(name = "categoriaORM", nullable = false)
-    private CategoriaEntity categoriaEntity;
+    private CategoriaDataMapper categoriaDataMapper;
 
     @Column(name = "preco", nullable = false)
     private Double preco;
@@ -41,11 +41,11 @@ public class ProdutoORM {
     public ProdutoORM() {
     }
 
-    public ProdutoORM(Long id, String nome, String descricao, CategoriaEntity categoriaEntity, Double preco) {
+    public ProdutoORM(Long id, String nome, String descricao, CategoriaDataMapper categoriaDataMapper, Double preco) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.categoriaEntity = categoriaEntity;
+        this.categoriaDataMapper = categoriaDataMapper;
         this.preco = preco;
     }
 
@@ -73,12 +73,12 @@ public class ProdutoORM {
         this.descricao = descricao;
     }
 
-    public CategoriaEntity getCategoriaEntity() {
-        return categoriaEntity;
+    public CategoriaDataMapper getCategoriaEntity() {
+        return categoriaDataMapper;
     }
 
-    public void setCategoria(CategoriaEntity categoriaORM) {
-        this.categoriaEntity = categoriaORM;
+    public void setCategoria(CategoriaDataMapper categoriaORM) {
+        this.categoriaDataMapper = categoriaORM;
     }
 
     public Double getPreco() {

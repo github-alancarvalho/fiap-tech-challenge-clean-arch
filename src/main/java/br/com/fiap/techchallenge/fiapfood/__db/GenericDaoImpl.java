@@ -1,6 +1,5 @@
-package br.com.fiap.techchallenge.fiapfood._infra.gateway;
+package br.com.fiap.techchallenge.fiapfood.__db;
 
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.GenericDao;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
@@ -24,7 +23,7 @@ public class GenericDaoImpl< T extends Serializable >
     }
 
     public final void setClazz(final Class<T> clazzToSet) {
-        this.clazz = clazzToSet;
+         this.clazz = clazzToSet;
     }
 
     public T findById(final long id) {

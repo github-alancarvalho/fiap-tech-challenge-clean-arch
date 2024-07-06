@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood._infra.persistence;
+package br.com.fiap.techchallenge.fiapfood.__db;
 
 
 import java.io.Serializable;

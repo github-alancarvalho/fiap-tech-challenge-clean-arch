@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb;
 
-import br.com.fiap.techchallenge.fiapfood._infra.persistence.ConnectionPoolManager;
+import br.com.fiap.techchallenge.fiapfood.__db.ConnectionPoolManager;
 import br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities.PagamentoORM;
 import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.PagamentoMapper;
 import br.com.fiap.techchallenge.hexagonal.core.domain.base.StatusPagamento;
