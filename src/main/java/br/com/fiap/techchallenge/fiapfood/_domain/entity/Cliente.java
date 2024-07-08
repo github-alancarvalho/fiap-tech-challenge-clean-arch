@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood._domain.entity;
 
-import br.com.fiap.techchallenge.hexagonal.core.domain.valueobject.Cpf;
-import br.com.fiap.techchallenge.hexagonal.core.domain.valueobject.Telefone;
+import br.com.fiap.techchallenge.fiapfood._domain.valueobject.Cpf;
+import br.com.fiap.techchallenge.fiapfood._domain.valueobject.Telefone;
 import lombok.Builder;
 import lombok.Data;
 

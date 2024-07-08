@@ -13,7 +13,7 @@ public class CategoriaResponse {
 
     @NotEmpty(message = "Id não pode ser vazio")
     @NotNull(message = "Id não pode ser nulo")
-    @Schema(description = "Id do PagamentoORM,", example = "123")
+    @Schema(description = "Id do PagamentoEntity,", example = "123")
     private Long id;
 
     @NotEmpty(message = "Nome da Categoria não pode ser vazio")

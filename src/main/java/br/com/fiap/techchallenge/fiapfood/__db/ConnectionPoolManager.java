@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.__db;
 
-import br.com.fiap.techchallenge.fiapfood.interfaces.DbConnection;
+
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Component("dbConnection")
-public class ConnectionPoolManager implements DbConnection {
+public class ConnectionPoolManager {
 
     private EntityManagerFactory entityManagerFactory;
 

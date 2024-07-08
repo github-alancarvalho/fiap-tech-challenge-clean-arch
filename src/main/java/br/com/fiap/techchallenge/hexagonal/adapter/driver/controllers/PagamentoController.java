@@ -1,11 +1,11 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driver.controllers;
 
-import br.com.fiap.techchallenge.hexagonal.adapter.driver.web.PagamentoRequest;
-import br.com.fiap.techchallenge.hexagonal.adapter.driver.web.PagamentoResponse;
+import br.com.fiap.techchallenge.fiapfood.__adapters.PagamentoRequest;
+import br.com.fiap.techchallenge.fiapfood.__adapters.PagamentoResponse;
 import br.com.fiap.techchallenge.hexagonal.core.applications.services.pagamento.AtualizarPagamentoUseCase;
 import br.com.fiap.techchallenge.hexagonal.core.applications.services.pagamento.BuscarPagamentoUseCase;
 import br.com.fiap.techchallenge.hexagonal.core.applications.services.pagamento.ProcessarPagamentoUseCase;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.StatusPagamento;
+import br.com.fiap.techchallenge.fiapfood._domain.base.StatusPagamento;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Pagamento;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Tag(name = "PagamentoORM API")
+@Tag(name = "PagamentoEntity API")
 @RestController
 @RequestMapping("/api/v1/PagamentosORM")
 public class PagamentoController {

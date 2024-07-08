@@ -1,19 +1,16 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb;
 
 import br.com.fiap.techchallenge.fiapfood.__db.ConnectionPoolManager;
-import br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities.PedidoORM;
-import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.ClienteMapper;
-import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.ItemPedidoMapper;
-import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.PedidoMapper;
-import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.ProdutoMapper;
-import br.com.fiap.techchallenge.hexagonal.core.applications.services.cliente.BuscarClienteUseCase;
-import br.com.fiap.techchallenge.hexagonal.core.applications.services.produto.BuscarProdutoUseCase;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.StatusPedido;
-import br.com.fiap.techchallenge.fiapfood._domain.entity.Cliente;
+import br.com.fiap.techchallenge.fiapfood.__db.PedidoEntity;
+import br.com.fiap.techchallenge.fiapfood.__db.mapper.ItemPedidoMapper;
+import br.com.fiap.techchallenge.fiapfood.__db.mapper.PedidoMapper;
+import br.com.fiap.techchallenge.fiapfood.__db.mapper.ProdutoMapper;
+import br.com.fiap.techchallenge.fiapfood.__usecases.ClienteUseCase;
+import br.com.fiap.techchallenge.fiapfood.__usecases.ProdutoUseCase;
+import br.com.fiap.techchallenge.fiapfood._domain.base.StatusPedido;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Pedido;
-import br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities.ItemPedidoORM;
-import br.com.fiap.techchallenge.hexagonal.core.domain.ports.output.PedidoRepository;
-import br.com.fiap.techchallenge.hexagonal.core.domain.valueobject.Cpf;
+import br.com.fiap.techchallenge.fiapfood.__db.ItemPedidoEntity;
+import br.com.fiap.techchallenge.fiapfood.__gateways.PedidoGateway;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -25,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class PedidoDao extends ConnectionPoolManager implements PedidoRepository {
+public class PedidoDao extends ConnectionPoolManager implements PedidoGateway {
 
     private EntityManager entityManager;
     private String statusField = "status";
@@ -34,22 +31,22 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
     public Optional<Pedido> inserir(Pedido pedido) {
         entityManager = getConnection().createEntityManager();
         entityManager.getTransaction().begin();
-        PedidoORM entity = PedidoMapper.mapToEntity(pedido);
-        BuscarClienteUseCase buscarClienteUseCase = new BuscarClienteUseCase();
-        Cliente cliente = buscarClienteUseCase.buscarClientePorCpfORM(new Cpf(entity.getCliente().getCpf())).get();
-        entity.setCliente(ClienteMapper.mapToEntity(cliente));
-        entity.setListItens(null);
+        PedidoEntity entity = PedidoMapper.mapToEntity(pedido);
+        ClienteUseCase buscarClienteUseCase = new ClienteUseCase(null);
+//        Cliente cliente = buscarClienteUseCase.buscarClientePorCpf(new Cpf(entity.getCliente().getCpf()));
+//        entity.setCliente(ClienteMapper.mapToEntity(cliente));
+//        entity.setListItens(null);
         entityManager.persist(entity);
         entityManager.flush();
 
-        BuscarProdutoUseCase buscarProdutoUseCase = new BuscarProdutoUseCase();
+        ProdutoUseCase buscarProdutoUseCase = new ProdutoUseCase(null);
 
-        List<ItemPedidoORM> itens = ItemPedidoMapper.mapListToEntity(pedido.getListItens());
-        for (ItemPedidoORM item : itens) {
+        List<ItemPedidoEntity> itens = ItemPedidoMapper.mapListToEntity(pedido.getListItens());
+        for (ItemPedidoEntity item : itens) {
             item.setPedido(entity);
             entityManager.persist(item);
             entityManager.flush();
-            item.setProduto(ProdutoMapper.mapToEntity(buscarProdutoUseCase.buscarProdutoPorId(item.getProduto().getId()).get()));
+            //item.setProduto(ProdutoMapper.mapToEntity(buscarProdutoUseCase.buscarProdutoPorId(item.getProduto().getId()).get()));
         }
 
         entityManager.getTransaction().commit();
@@ -61,7 +58,7 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
     @Override
     public Optional<Pedido> buscarPorId(Long id) {
         entityManager = getConnection().createEntityManager();
-        PedidoORM entity = entityManager.find(PedidoORM.class, id);
+        PedidoEntity entity = entityManager.find(PedidoEntity.class, id);
         entityManager.close();
         return Optional.ofNullable(PedidoMapper.mapToEntity(entity));
     }
@@ -70,7 +67,7 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
     public Optional<List<Pedido>> listarTudo() {
         entityManager = getConnection().createEntityManager();
         Query query = entityManager.createNamedQuery("findAllPedidos");
-        List<PedidoORM> list = query.getResultList();
+        List<PedidoEntity> list = query.getResultList();
         entityManager.close();
         return Optional.ofNullable(PedidoMapper.mapListToEntity(list));
     }
@@ -79,13 +76,13 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
     public Optional<List<Pedido>> listarPedidosPorStatus(StatusPedido status) {
         entityManager = getConnection().createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<PedidoORM> criteriaQuery = criteriaBuilder.createQuery(PedidoORM.class);
-        Root<PedidoORM> root = criteriaQuery.from(PedidoORM.class);
+        CriteriaQuery<PedidoEntity> criteriaQuery = criteriaBuilder.createQuery(PedidoEntity.class);
+        Root<PedidoEntity> root = criteriaQuery.from(PedidoEntity.class);
 
         criteriaQuery.select(root);
         criteriaQuery.where(criteriaBuilder.equal(root.get(statusField), status.toString()));
 
-        List<PedidoORM> resultList = entityManager.createQuery(criteriaQuery).getResultList();
+        List<PedidoEntity> resultList = entityManager.createQuery(criteriaQuery).getResultList();
         entityManager.close();
         return Optional.ofNullable(PedidoMapper.mapListToEntity(resultList));
     }
@@ -94,8 +91,8 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
     public Optional<List<Pedido>> listarPedidosEmAberto() {
         entityManager = getConnection().createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<PedidoORM> criteriaQuery = criteriaBuilder.createQuery(PedidoORM.class);
-        Root<PedidoORM> root = criteriaQuery.from(PedidoORM.class);
+        CriteriaQuery<PedidoEntity> criteriaQuery = criteriaBuilder.createQuery(PedidoEntity.class);
+        Root<PedidoEntity> root = criteriaQuery.from(PedidoEntity.class);
 
         Predicate statusNull = criteriaBuilder.isNull(root.get(statusField));
         Predicate statusEntregue = criteriaBuilder.notEqual(root.get(statusField), StatusPedido.ENTREGUE);
@@ -104,7 +101,7 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
         criteriaQuery.where(criteriaBuilder.or(statusNull, statusEntregue));
 
 
-        List<PedidoORM> resultList = entityManager.createQuery(criteriaQuery).getResultList();
+        List<PedidoEntity> resultList = entityManager.createQuery(criteriaQuery).getResultList();
         entityManager.close();
         return Optional.ofNullable(PedidoMapper.mapListToEntity(resultList));
     }
@@ -112,7 +109,7 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
     @Override
     public Boolean excluir(Pedido pedido) {
         entityManager = getConnection().createEntityManager();
-        PedidoORM entity = entityManager.find(PedidoORM.class, pedido.getId());
+        PedidoEntity entity = entityManager.find(PedidoEntity.class, pedido.getId());
         if (entity != null) {
             entityManager.getTransaction().begin();
             entityManager.remove(entity);
@@ -132,7 +129,7 @@ public class PedidoDao extends ConnectionPoolManager implements PedidoRepository
 
         entityManager = getConnection().createEntityManager();
         entityManager.getTransaction().begin();
-        PedidoORM entity = PedidoMapper.mapToEntity(pedidoDto);
+        PedidoEntity entity = PedidoMapper.mapToEntity(pedidoDto);
         entity.setStatus(novoStatus);
         entityManager.merge(entity);
         entityManager.flush();

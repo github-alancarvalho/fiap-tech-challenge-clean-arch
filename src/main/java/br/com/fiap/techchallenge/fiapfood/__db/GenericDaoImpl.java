@@ -8,12 +8,8 @@ import java.io.Serializable;
 import java.util.List;
 
 
-@Scope( BeanDefinition.SCOPE_PROTOTYPE )
-//public class GenericDaoImpl< T extends Serializable >
-//        extends AbstractJpaDao< T > implements GenericDao< T >{
-//}
-public class GenericDaoImpl< T extends Serializable >
-        implements GenericDao< T >{
+@Scope(BeanDefinition.SCOPE_PROTOTYPE)
+public class GenericDaoImpl<T extends Serializable> {
 
     private Class<T> clazz;
     private EntityManager entityManager;
@@ -23,11 +19,15 @@ public class GenericDaoImpl< T extends Serializable >
     }
 
     public final void setClazz(final Class<T> clazzToSet) {
-         this.clazz = clazzToSet;
+        this.clazz = clazzToSet;
     }
 
     public T findById(final long id) {
         return entityManager.find(clazz, id);
+    }
+
+    public T find(Object o) {
+        return entityManager.find(clazz, o);
     }
 
     public List<T> findAll() {
@@ -35,16 +35,26 @@ public class GenericDaoImpl< T extends Serializable >
     }
 
     public T save(final T entity) {
+        entityManager.getTransaction().begin();
         entityManager.persist(entity);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
         return entity;
     }
 
     public T update(final T entity) {
-        return entityManager.merge(entity);
+        entityManager.getTransaction().begin();
+        entityManager.merge(entity);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
+        return entity;
     }
 
     public void delete(final T entity) {
+        entityManager.getTransaction().begin();
         entityManager.remove(entity);
+        entityManager.flush();
+        entityManager.getTransaction().commit();
     }
 
     public void deleteById(final long entityId) {

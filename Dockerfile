@@ -13,7 +13,7 @@ RUN mvn clean install -DskipTests
 EXPOSE 8080
 EXPOSE 9000
 
-# Instale o clienteORM MySQL
+# Instale o clienteEntity MySQL
 RUN apk add --no-cache mysql-client
 
 

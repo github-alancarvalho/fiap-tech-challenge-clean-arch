@@ -1,6 +1,8 @@
-package br.com.fiap.techchallenge.fiapfood._domain.entity;
+package br.com.fiap.techchallenge.fiapfood.__adapters;
 
 import br.com.fiap.techchallenge.fiapfood._domain.base.StatusPedido;
+import br.com.fiap.techchallenge.fiapfood._domain.entity.Cliente;
+import br.com.fiap.techchallenge.fiapfood._domain.entity.ItemPedido;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -11,20 +13,18 @@ import java.util.List;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class Pedido {
+public class PedidoResponse {
 
     private Long id;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Cliente cliente;
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     private StatusPedido status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ItemPedido> listItens = new ArrayList<>();
 
-    public Pedido() {
+    public PedidoResponse() {
     }
 
-    public Pedido(Long id, Cliente cliente, StatusPedido status, List<ItemPedido> listItens) {
+    public PedidoResponse(Long id, Cliente cliente, StatusPedido status, List<ItemPedido> listItens) {
         this.id = id;
         this.cliente = cliente;
         this.status = status;

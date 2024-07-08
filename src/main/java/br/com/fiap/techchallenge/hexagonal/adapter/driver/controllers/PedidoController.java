@@ -1,15 +1,15 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driver.controllers;
 
-import br.com.fiap.techchallenge.hexagonal.adapter.driver.web.PedidoRequest;
-import br.com.fiap.techchallenge.hexagonal.adapter.driver.web.PedidoResponse;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.StatusPedido;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.pedido.AtualizarPedidoUseCase;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.pedido.BuscarPedidoUseCase;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.pedido.CheckoutUseCase;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.pedido.ExcluirPedidoUseCase;
+import br.com.fiap.techchallenge.fiapfood.__adapters.PedidoRequest;
+import br.com.fiap.techchallenge.fiapfood.__adapters.PedidoResponse;
+import br.com.fiap.techchallenge.fiapfood._domain.base.StatusPedido;
+import br.com.fiap.techchallenge.hexagonal.core.applications.services.pedido.AtualizarPedidoUseCase;
+import br.com.fiap.techchallenge.hexagonal.core.applications.services.pedido.BuscarPedidoUseCase;
+import br.com.fiap.techchallenge.hexagonal.core.applications.services.pedido.CheckoutUseCase;
+import br.com.fiap.techchallenge.hexagonal.core.applications.services.pedido.ExcluirPedidoUseCase;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Cliente;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Pedido;
-import br.com.fiap.techchallenge.hexagonal.core.domain.valueobject.Cpf;
+import br.com.fiap.techchallenge.fiapfood._domain.valueobject.Cpf;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Tag(name = "PedidoORM API")
+@Tag(name = "PedidoEntity API")
 @RestController
 @RequestMapping("/api/v1/PedidosORM")
 public class PedidoController {
@@ -39,7 +39,7 @@ public class PedidoController {
         this.checkoutUseCase = new CheckoutUseCase();
     }
 
-    @Operation(summary = "Checkout do PedidoORM", description = "Checkout do PedidoORM. PedidoORM é inserido e aguardando pagamento")
+    @Operation(summary = "Checkout do PedidoEntity", description = "Checkout do PedidoEntity. PedidoEntity é inserido e aguardando pagamento")
     @PostMapping("/{checkout}")
     public ResponseEntity<Optional<PedidoResponse>> checkout(@Valid @RequestBody PedidoRequest pedidoRequest) {
 
@@ -63,7 +63,7 @@ public class PedidoController {
         }
     }
 
-    @Operation(summary = "Buscar PedidoORM por Id", description = "Buscar PedidoORM por Id")
+    @Operation(summary = "Buscar PedidoEntity por Id", description = "Buscar PedidoEntity por Id")
     @GetMapping("/buscarPedidoPorId")
     public ResponseEntity<Optional<PedidoResponse>> buscarPedidoPorId(@RequestParam("id") Long id) {
 

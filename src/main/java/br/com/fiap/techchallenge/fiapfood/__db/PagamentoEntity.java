@@ -1,32 +1,37 @@
-package br.com.fiap.techchallenge.fiapfood._domain.entity;
+package br.com.fiap.techchallenge.fiapfood.__db;
 
 import br.com.fiap.techchallenge.fiapfood._domain.base.StatusPagamento;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Builder;
-import lombok.Data;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-@Data
-@Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Pagamento {
+@Entity
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONE)
+@Table(name = "pagamento")
+@NamedQuery(name = "findAllPagamentos", query = "SELECT p FROM PagamentoEntity p")
+public class PagamentoEntity {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    //@OneToOne
+    @Column(name = "pedido_id", nullable = false)
     private Long idPedido;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @NotBlank
+    @Enumerated(EnumType.STRING)
     private StatusPagamento status;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @NotBlank
+    @Column(name = "valor", nullable = false)
     private Double valor;
 
-    public Pagamento() {
 
+    public PagamentoEntity() {
     }
 
-    public Pagamento(Long id, Long idPedido, StatusPagamento status, Double valor) {
+    public PagamentoEntity(Long id, Long idPedido, StatusPagamento status, Double valor) {
         this.id = id;
         this.idPedido = idPedido;
         this.status = status;

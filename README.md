@@ -42,38 +42,38 @@ $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
 
 
 ## Problema
-Há uma lanchonete de bairro que está expandindo devido seu grande sucesso. Porém, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode ser caótico e confuso. Por exemplo, imagine que um clienteORM faça um pedidoORM complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedidoORM em um papel e entregá-lo à cozinha, mas não há garantia de que o pedidoORM será preparado corretamente.
+Há uma lanchonete de bairro que está expandindo devido seu grande sucesso. Porém, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode ser caótico e confuso. Por exemplo, imagine que um clienteEntity faça um pedidoEntity complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedidoEntity em um papel e entregá-lo à cozinha, mas não há garantia de que o pedidoEntity será preparado corretamente.
 Sem um sistema de controle de pedidos, pode haver confusão entre os atendentes e a cozinha, resultando em atrasos na preparação e entrega dos pedidos. Os pedidos podem ser perdidos, mal interpretados ou esquecidos, levando à insatisfação dos clientes e a perda de negócios.
 Em resumo, um sistema de controle de pedidos é essencial para garantir que a lanchonete possa atender os clientes de maneira eficiente, gerenciando seus pedidos e estoques de forma adequada. Sem ele, expandir a lanchonete pode acabar não dando certo, resultando em clientes insatisfeitos e impactando os negócios de forma negativa.
 Para solucionar o problema, a lanchonete irá investir em um sistema de autoatendimento de fast food, que é composto por uma série de dispositivos e interfaces que permitem aos clientes selecionar e fazer pedidos sem precisar interagir com um atendente, com as seguintes funcionalidades:
 
 Pedido: Os clientes são apresentados a uma interface de seleção na qual podem optar por se identificarem via CPF, se cadastrarem com nome, e-mail ou não se identificar, podendo montar o combo na seguinte sequência, sendo todas elas opcionais: Lanche, Acompanhamento, Bebida e Sobremesa.
-Em cada etapa é exibido o nome, descrição e preço de cada produtoORM.
+Em cada etapa é exibido o nome, descrição e preço de cada produtoEntity.
 
-Pagamento: O sistema deverá possuir uma opção de pagamentoORM integrada para MVP. A forma de pagamentoORM oferecida será via QRCode do Mercado Pago.
+Pagamento: O sistema deverá possuir uma opção de pagamentoEntity integrada para MVP. A forma de pagamentoEntity oferecida será via QRCode do Mercado Pago.
 
-Acompanhamento: Uma vez que o pedidoORM é confirmado e pago, ele é enviado para a cozinha para ser preparado. Simultaneamente deve aparecer em um monitor para o clienteORM acompanhar o progresso do seu pedidoORM com as seguintes etapas:
+Acompanhamento: Uma vez que o pedidoEntity é confirmado e pago, ele é enviado para a cozinha para ser preparado. Simultaneamente deve aparecer em um monitor para o clienteEntity acompanhar o progresso do seu pedidoEntity com as seguintes etapas:
 - Recebido
 - Em preparação
 - Pronto
 - Finalizado
 
 
-Deve ser possível acompanhar os pedidos em andamento e tempo de espera de cada pedidoORM.
+Deve ser possível acompanhar os pedidos em andamento e tempo de espera de cada pedidoEntity.
 
-Entrega: Quando o pedidoORM estiver pronto, o sistema deverá notificar o clienteORM que ele está pronto para retirada. Ao ser retirado, o pedidoORM deve ser atualizado para o status finalizado.
+Entrega: Quando o pedidoEntity estiver pronto, o sistema deverá notificar o clienteEntity que ele está pronto para retirada. Ao ser retirado, o pedidoEntity deve ser atualizado para o status finalizado.
 
-Além das etapas do clienteORM, o estabelecimento precisa de um acesso administrativo:
+Além das etapas do clienteEntity, o estabelecimento precisa de um acesso administrativo:
 
 Gerenciar clientes: Com a identificação dos clientes o estabelecimento pode trabalhar em campanhas promocionais.
-Gerenciar produtos e categorias: Os produtos dispostos para escolha do clienteORM serão gerenciados pelo estabelecimento, definindo nome, categoriaDataMapper, preço, descrição e imagens. Para esse sistema teremos categorias fixas: Lanche, Acompanhamento, Bebida e Sobremesa.
+Gerenciar produtos e categorias: Os produtos dispostos para escolha do clienteEntity serão gerenciados pelo estabelecimento, definindo nome, categoriaEntity, preço, descrição e imagens. Para esse sistema teremos categorias fixas: Lanche, Acompanhamento, Bebida e Sobremesa.
 
 As informações dispostas no sistema de pedidos precisarão ser gerenciadas pelo estabelecimento através de um painel administrativo.
 
 ## Critérios de aceite
 Entregável 1: Documentação do sistema (DDD) com Event Storming, incluindo todos os passos/tipos de diagrama mostrados na aula 6 do módulo de DDD, e utilizando a linguagem ubíqua, dos seguintes fluxos:
-a. Realização do pedidoORM e pagamentoORM
-b. Preparação e entrega do pedidoORM
+a. Realização do pedidoEntity e pagamentoEntity
+b. Preparação e entrega do pedidoEntity
 
 Entregável 2:Uma aplicação para todo o sistema de backend (monolito) que deverá ser desenvolvido seguindo os padrões apresentados nas aulas:
 Utilizando arquitetura hexagonal
@@ -81,8 +81,8 @@ APIs:
 - Cadastro do Cliente
 - Identificação do Cliente via CPF
 - Criar, editar e remover produtos
-- Buscar produtos por categoriaDataMapper
-- Fake checkout, apenas enviar os produtos escolhidos para a fila. O checkout é a finalização do pedidoORM.
+- Buscar produtos por categoriaEntity
+- Fake checkout, apenas enviar os produtos escolhidos para a fila. O checkout é a finalização do pedidoEntity.
 - Listar os pedidos
   Disponibilizar também o Swagger para consumo dessas APIs
   Banco de dados à sua escolha - Inicialmente deveremos trabalhar e organizar a fila dos pedidos apenas em banco de dados
@@ -92,11 +92,11 @@ Entregável 3: A aplicação deve ser entregue com um Dockerfile configurado par
 
 # Solução
 ## Domain Storytelling
-### Fluxo Realização do pedidoORM e pagamentoORM:
+### Fluxo Realização do pedidoEntity e pagamentoEntity:
 ![Fast Food - Pedido e Pagamento_2024-04-14 (4)](https://github.com/github-alancarvalho/fiap-tech-challenge-initial/assets/166860938/fd01d09f-12f7-4d5c-ab10-85ee8a89566c)
 
 
-### Fluxo Preparação e entrega do pedidoORM:
+### Fluxo Preparação e entrega do pedidoEntity:
 ![Fast Food - Preparação e entrega do pedido_2024-04-14 (2)](https://github.com/github-alancarvalho/fiap-tech-challenge-initial/assets/166860938/022d29a1-c181-47bd-bb56-95237aa196d3)
 
 
@@ -108,7 +108,7 @@ https://miro.com/app/board/uXjVKUnohjM=/?share_link_id=725040074360
 - Subdomínio Principal:
     - Gestão de Pedido
 - Subdomínio Genérico:
-    - Lógica de pagamentoORM integrada ao mercado pago.
+    - Lógica de pagamentoEntity integrada ao mercado pago.
     - Autenticação e Autorização
     - Notificações - Envio de notificações sobre o progresso dos pedidos para os clientes
     - Gestão de estoque
@@ -123,7 +123,7 @@ https://miro.com/app/board/uXjVKUnohjM=/?share_link_id=725040074360
 
 - Clientes
 - Produto(Cardápio)
-- Pedido (Realização do pedidoORM)
+- Pedido (Realização do pedidoEntity)
 - Pagamento
 - Sistema Externo - Mercado Pago
 - Preparação
@@ -135,9 +135,9 @@ https://miro.com/app/board/uXjVKUnohjM=/?share_link_id=725040074360
 
 ### Dicionário de linguagem ubíqua
 - Cliente: Pessoa que deseja efetuar ou já tenha efetuado uma compra no restaurante
-- Cozinheiro: Pessoa que prepara o pedidoORM
-- Item: Item é uma referência a qualquer produtoORM disponível ou adicionado ao pedidoORM.
-- Pedido: Itens que o clienteORM deseja comprar ou que já comprou.
+- Cozinheiro: Pessoa que prepara o pedidoEntity
+- Item: Item é uma referência a qualquer produtoEntity disponível ou adicionado ao pedidoEntity.
+- Pedido: Itens que o clienteEntity deseja comprar ou que já comprou.
 - Identificação: Pode se identificar usando CPF, nome, e-mail ou não se identificar.
 
 Cardápio: A lista de ítens disponíveis para compra. Esses itens são agrupados em 4 categorias: Lanche, Acompanhamento, Bebida e Sobremesa. Todos os itens são opcionais.
@@ -147,10 +147,10 @@ Cardápio: A lista de ítens disponíveis para compra. Esses itens são agrupado
 - Sobremesa: No momento da compra, sobremesa pode ser, por exemplo: sorvetes, frutas, tortas, bolos, milkshakes especiais ou outros doces.
 
 Etapas do Progresso do Pedido:
-- RECEBIDO: Pagamento confirmado e o pedidoORM está na fila para ser preparado
-- EM PREPARAÇÃO: Preparação do pedidoORM foi iniciada
-- PRONTO: Pedido está liberado para ser retirado pelo clienteORM
-- FINALIZADO: Pedido foi retirado pelo clienteORM
+- RECEBIDO: Pagamento confirmado e o pedidoEntity está na fila para ser preparado
+- EM PREPARAÇÃO: Preparação do pedidoEntity foi iniciada
+- PRONTO: Pedido está liberado para ser retirado pelo clienteEntity
+- FINALIZADO: Pedido foi retirado pelo clienteEntity
 
 
 ---
@@ -193,7 +193,7 @@ http://localhost:8080/api/v1/ClientesORM/buscarClientePorCpf?cpf=86954751073
 http://localhost:8080/api/v1/ClientesORM/buscarTudo
 
 
----------------Alterar clienteORM---------------
+---------------Alterar clienteEntity---------------
 
 http://localhost:8080/api/v1/ClientesORM/alterar
 
@@ -205,7 +205,7 @@ http://localhost:8080/api/v1/ClientesORM/alterar
 }
 
 
----------------Excluir clienteORM---------------
+---------------Excluir clienteEntity---------------
 
 http://localhost:8080/api/v1/ClientesORM/excluir?cpf=29429548093
 
@@ -213,7 +213,7 @@ http://localhost:8080/api/v1/ClientesORM/excluir?cpf=29429548093
 
 #############################Produto API#############################
 
----------------Inserir produtoORM----------------
+---------------Inserir produtoEntity----------------
 
 http://localhost:8080/api/v1/ProdutosORM/inserir
 
@@ -247,7 +247,7 @@ http://localhost:8080/api/v1/ProdutosORM/inserir
 
 
 
----------------Buscar produtoORM por id----------------
+---------------Buscar produtoEntity por id----------------
 
 http://localhost:8080/api/v1/ProdutosORM/buscarProdutoPorId?id=1
 
@@ -256,7 +256,7 @@ http://localhost:8080/api/v1/ProdutosORM/buscarProdutoPorId?id=1
 
 http://localhost:8080/api/v1/ProdutosORM/buscarTudo
 
----------------Buscar produtos por categoriaDataMapper----------------
+---------------Buscar produtos por categoriaEntity----------------
 
 http://localhost:8080/api/v1/ProdutosORM/buscarProdutosPorCategoria?id=1
 
@@ -265,7 +265,7 @@ http://localhost:8080/api/v1/ProdutosORM/buscarProdutosPorCategoria?id=1
 //3: Sobremesa
 //4: Bebida
 
----------------Alterar produtoORM----------------
+---------------Alterar produtoEntity----------------
 
 http://localhost:8080/api/v1/ProdutosORM/alterar
 
@@ -277,7 +277,7 @@ http://localhost:8080/api/v1/ProdutosORM/alterar
 "preco": 788.9
 }
 
----------------Excluir produtoORM----------------
+---------------Excluir produtoEntity----------------
 
 http://localhost:8080/api/v1/ProdutosORM/excluir?id=2
 
@@ -285,7 +285,7 @@ http://localhost:8080/api/v1/ProdutosORM/excluir?id=2
 
 #############################Pedido API#############################
 
----------------Checkout pedidoORM----------------
+---------------Checkout pedidoEntity----------------
 
 http://localhost:8080/api/v1/PedidosORM/checkout
 
@@ -294,13 +294,13 @@ http://localhost:8080/api/v1/PedidosORM/checkout
 
     "listItens":[
         {
-            "produtoORM":{
+            "produtoEntity":{
                 "id":1
             },
             "quantidade":77
         },
         {
-            "produtoORM":{
+            "produtoEntity":{
                 "id":3
             },
             "quantidade":73
@@ -327,11 +327,11 @@ http://localhost:8080/api/v1/PedidosORM/buscarPedidosPorStatus?status=ENTREGUE
 http://localhost:8080/api/v1/PedidosORM/buscarPedidosEmAberto
 
 
----------------Buscar pedidoORM por Id----------------
+---------------Buscar pedidoEntity por Id----------------
 
 http://localhost:8080/api/v1/PedidosORM/buscarPedidoPorId?id=1
 
----------------Alterar progresso do pedidoORM----------------
+---------------Alterar progresso do pedidoEntity----------------
 
 http://localhost:8080/api/v1/PedidosORM/alterarProgresso?status=EM_PREPARACAO
 
@@ -339,7 +339,7 @@ http://localhost:8080/api/v1/PedidosORM/alterarProgresso?status=EM_PREPARACAO
 "id": 1
 }
 
----------------Excluir pedidoORM----------------
+---------------Excluir pedidoEntity----------------
 
 http://localhost:8080/api/v1/PedidosORM/excluir?id=1
 
@@ -351,7 +351,7 @@ http://localhost:8080/api/v1/PedidosORM/excluir?id=1
 
 http://localhost:8080/api/v1/PagamentosORM/buscarTodosPagamentos
 
----------------Atualizar status do pagamentoORM----------------
+---------------Atualizar status do pagamentoEntity----------------
 
 http://localhost:8080/api/v1/PagamentosORM/atualizarProgressoPagamento?status=CONFIRMADO
 

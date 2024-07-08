@@ -1,11 +1,11 @@
 package br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb;
 
 import br.com.fiap.techchallenge.fiapfood.__db.ConnectionPoolManager;
-import br.com.fiap.techchallenge.fiapfood.frameworksdrivers.api.entities.PagamentoORM;
-import br.com.fiap.techchallenge.hexagonal.adapter.driven.infra.repositories.mariadb.mapper.PagamentoMapper;
-import br.com.fiap.techchallenge.hexagonal.core.domain.base.StatusPagamento;
+import br.com.fiap.techchallenge.fiapfood.__db.PagamentoEntity;
+import br.com.fiap.techchallenge.fiapfood.__db.mapper.PagamentoMapper;
+import br.com.fiap.techchallenge.fiapfood._domain.base.StatusPagamento;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Pagamento;
-import br.com.fiap.techchallenge.hexagonal.core.domain.ports.output.PagamentoRepository;
+import br.com.fiap.techchallenge.fiapfood.__gateways.PagamentoGateway;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
 
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class PagamentoDao extends ConnectionPoolManager implements PagamentoRepository {
+public class PagamentoDao extends ConnectionPoolManager implements PagamentoGateway {
 
     private EntityManager entityManager;
 
@@ -21,7 +21,7 @@ public class PagamentoDao extends ConnectionPoolManager implements PagamentoRepo
     public Optional<Pagamento> processarPagamento(Pagamento pagamento) {
         entityManager = getConnection().createEntityManager();
         entityManager.getTransaction().begin();
-        PagamentoORM entity = PagamentoMapper.mapToEntity(pagamento);
+        PagamentoEntity entity = PagamentoMapper.mapToEntity(pagamento);
         entityManager.persist(entity);
         entityManager.flush();
         entityManager.getTransaction().commit();
@@ -31,7 +31,7 @@ public class PagamentoDao extends ConnectionPoolManager implements PagamentoRepo
 
     @Override
     public Optional<Pagamento> atualizarStatusPagamento(Pagamento pagamento, StatusPagamento status) {
-        PagamentoORM entity = PagamentoMapper.mapToEntity(buscarPagamentoPorId(pagamento.getId()).get());
+        PagamentoEntity entity = PagamentoMapper.mapToEntity(buscarPagamentoPorId(pagamento.getId()).get());
         entity.setStatus(status);
         entityManager = getConnection().createEntityManager();
         entityManager.getTransaction().begin();
@@ -45,7 +45,7 @@ public class PagamentoDao extends ConnectionPoolManager implements PagamentoRepo
     @Override
     public Optional<Pagamento> buscarPagamentoPorId(Long id) {
         entityManager = getConnection().createEntityManager();
-        PagamentoORM entity = entityManager.find(PagamentoORM.class, id);
+        PagamentoEntity entity = entityManager.find(PagamentoEntity.class, id);
         entityManager.close();
         return Optional.ofNullable(PagamentoMapper.mapToEntity(entity));
     }
@@ -54,7 +54,7 @@ public class PagamentoDao extends ConnectionPoolManager implements PagamentoRepo
     public Optional<List<Pagamento>> listarPagamentos() {
         entityManager = getConnection().createEntityManager();
         Query query = entityManager.createNamedQuery("findAllPagamentos");
-        List<PagamentoORM> list = query.getResultList();
+        List<PagamentoEntity> list = query.getResultList();
         entityManager.close();
         return Optional.ofNullable(PagamentoMapper.mapListToEntity(list));
     }
