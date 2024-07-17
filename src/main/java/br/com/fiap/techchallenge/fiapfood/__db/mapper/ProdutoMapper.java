@@ -1,5 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.__db.mapper;
 
+import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoResponse;
 import br.com.fiap.techchallenge.fiapfood.__db.ProdutoEntity;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Produto;
 
@@ -53,5 +54,20 @@ public class ProdutoMapper {
         }
         return list;
     }
+
+    public static Produto mapToEntity(ProdutoResponse produtoResponse) {
+        if (produtoResponse == null) {
+            return null;
+        }
+
+        return new Produto(
+                produtoResponse.getId(),
+                produtoResponse.getNome(),
+                produtoResponse.getDescricao(),
+                produtoResponse.getCategoria(),
+                produtoResponse.getPreco()
+        );
+    }
+
 
 }

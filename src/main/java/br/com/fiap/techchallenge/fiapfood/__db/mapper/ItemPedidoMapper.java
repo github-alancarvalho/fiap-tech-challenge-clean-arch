@@ -1,9 +1,11 @@
 package br.com.fiap.techchallenge.fiapfood.__db.mapper;
 
+import br.com.fiap.techchallenge.fiapfood.__adapters.ItemPedidoRequest;
 import br.com.fiap.techchallenge.fiapfood.__db.PedidoEntity;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.ItemPedido;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Pedido;
 import br.com.fiap.techchallenge.fiapfood.__db.ItemPedidoEntity;
+import br.com.fiap.techchallenge.fiapfood._domain.entity.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,22 @@ public class ItemPedidoMapper {
 
     private ItemPedidoMapper() {
         throw new IllegalStateException("Utility class");
+    }
+
+    public static List<ItemPedido> mapFromRequestToDomain(List<ItemPedidoRequest> listItemPedidoRequest) {
+        if (listItemPedidoRequest == null) {
+            return null;
+        }
+
+        List<ItemPedido> list = new ArrayList<>();
+        for (ItemPedidoRequest itemPedidoRequest : listItemPedidoRequest) {
+            list.add(ItemPedido.builder()
+                    .pedido(Pedido.builder().id(itemPedidoRequest.getIdPedido()).build())
+                    .produto(Produto.builder().id(itemPedidoRequest.getIdProduto()).build())
+                    .quantidade(itemPedidoRequest.getQuantidade()).build());
+        }
+
+        return list;
     }
 
     public static ItemPedido mapToEntity(ItemPedidoEntity entity) {

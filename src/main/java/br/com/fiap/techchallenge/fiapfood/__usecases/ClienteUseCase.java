@@ -41,13 +41,16 @@ public class ClienteUseCase implements ClienteUseCaseBoundary{
     }
 
     public ClienteResponse buscarClientePorCpf(Cpf cpf) throws FiapFoodException {
-        Cliente clienteSaved = this.clienteGateway.buscarPorCpf(cpf);
+        Cliente cliente = this.clienteGateway.buscarPorCpf(cpf);
 
-        return ClienteResponse.builder().cpf(clienteSaved.getCpf().getCpfSomenteNumero())
-                .nome(clienteSaved.getNome())
-                .email(clienteSaved.getEmail())
-                .telefone(clienteSaved.getTelefone().getTelefone())
+        if(cliente != null )
+            return ClienteResponse.builder().cpf(cliente.getCpf().getCpfSomenteNumero())
+                .nome(cliente.getNome())
+                .email(cliente.getEmail())
+                .telefone(cliente.getTelefone().getTelefone())
                 .build();
+        else
+            return null;
     }
 
     public List<ClienteResponse> buscarTodosClientes() throws FiapFoodException{

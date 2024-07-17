@@ -3,12 +3,13 @@ package br.com.fiap.techchallenge.fiapfood.__db;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "item_pedido")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ItemPedidoEntity {
+public class ItemPedidoEntity implements Serializable {
 
     @Id
     @ManyToOne(cascade = CascadeType.PERSIST)

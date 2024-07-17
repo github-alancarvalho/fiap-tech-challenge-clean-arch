@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,15 +20,18 @@ public class Pedido {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private StatusPedido status;
     @JsonInclude(JsonInclude.Include.NON_NULL)
+    private LocalDateTime data;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ItemPedido> listItens = new ArrayList<>();
 
     public Pedido() {
     }
 
-    public Pedido(Long id, Cliente cliente, StatusPedido status, List<ItemPedido> listItens) {
+    public Pedido(Long id, Cliente cliente, StatusPedido status, LocalDateTime data, List<ItemPedido> listItens) {
         this.id = id;
         this.cliente = cliente;
         this.status = status;
+        this.data = data;
         this.listItens = listItens;
     }
 
@@ -53,6 +57,14 @@ public class Pedido {
 
     public void setStatus(StatusPedido status) {
         this.status = status;
+    }
+
+    public LocalDateTime getData() {
+        return data;
+    }
+
+    public void setData(LocalDateTime data) {
+        this.data = data;
     }
 
     public List<ItemPedido> getListItens() {

@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
+import java.io.Serializable;
+
 @Entity
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONE)
 @Table(name = "pagamento")
 @NamedQuery(name = "findAllPagamentos", query = "SELECT p FROM PagamentoEntity p")
-public class PagamentoEntity {
+public class PagamentoEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

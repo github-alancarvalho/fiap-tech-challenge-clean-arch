@@ -26,9 +26,9 @@ public class ProdutoResponse {
     @Schema(description = "Descricao do produto,", example = "Sandubão com ovo e bacon")
     private String descricao;
 
-    @NotEmpty(message = "CategoriaEntity não pode ser vazia")
-    @NotNull(message = "CategoriaEntity não pode ser nula")
-    @Schema(description = "CategoriaEntity do produto,")
+    @NotEmpty(message = "Categoria não pode ser vazia")
+    @NotNull(message = "Categoria não pode ser nula")
+    @Schema(description = "Categoria do produto,")
     private Categoria categoria;
 
     @NotEmpty(message = "Preço não pode ser vazio")

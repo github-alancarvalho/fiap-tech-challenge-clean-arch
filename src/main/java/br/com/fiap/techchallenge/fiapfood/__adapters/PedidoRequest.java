@@ -1,6 +1,5 @@
 package br.com.fiap.techchallenge.fiapfood.__adapters;
 
-import br.com.fiap.techchallenge.fiapfood._domain.entity.ItemPedido;
 import lombok.Builder;
 import lombok.Data;
 
@@ -14,16 +13,18 @@ public class PedidoRequest {
     private Long id;
     private String cpfCliente;
     private String status;
-    private List<ItemPedido> listItens = new ArrayList<>();
+    private DadosPagamentoRequest dadosPagamento;
+    private List<ItemPedidoRequest> listItens = new ArrayList<>();
 
     public PedidoRequest() {
     }
 
-    public PedidoRequest(Long id, String cpfCliente, String status, List<ItemPedido> listItens) {
+    public PedidoRequest(Long id, String cpfCliente, String status, DadosPagamentoRequest dadosPagamento, List<ItemPedidoRequest> listItens) {
         this.id = id;
         this.cpfCliente = cpfCliente;
         this.status = status;
         this.listItens = listItens;
+        this.dadosPagamento = dadosPagamento;
     }
 
     public Long getId() {
@@ -50,11 +51,19 @@ public class PedidoRequest {
         this.status = status;
     }
 
-    public List<ItemPedido> getListItens() {
+    public List<ItemPedidoRequest> getListItens() {
         return listItens;
     }
 
-    public void setListItens(List<ItemPedido> listItens) {
+    public void setListItens(List<ItemPedidoRequest> listItens) {
         this.listItens = listItens;
+    }
+
+    public DadosPagamentoRequest getDadosPagamento() {
+        return dadosPagamento;
+    }
+
+    public void setDadosPagamento(DadosPagamentoRequest dadosPagamento) {
+        this.dadosPagamento = dadosPagamento;
     }
 }

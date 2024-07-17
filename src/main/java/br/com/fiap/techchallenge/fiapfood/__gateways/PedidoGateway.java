@@ -8,17 +8,20 @@ import java.util.Optional;
 
 public interface PedidoGateway {
 
-    Optional<Pedido> inserir(Pedido pedido);
+    Pedido inserir(Pedido pedido);
 
-    Optional<Pedido> atualizarProgresso(Pedido pedido, StatusPedido novoStatus);
+    Pedido atualizarProgresso(Pedido pedido, StatusPedido novoStatus);
 
-    Boolean excluir(Pedido pedido);
+    Boolean excluir(Long id);
 
-    Optional<Pedido> buscarPorId(Long id);
+    Pedido buscarPorId(Long id);
 
-    Optional<List<Pedido>> listarTudo();
+    List<Pedido> listarTudo();
 
-    Optional<List<Pedido>> listarPedidosPorStatus(StatusPedido status);
+    List<Pedido> listarPedidosPorStatus(StatusPedido status);
 
-    Optional<List<Pedido>> listarPedidosEmAberto();
+    List<Pedido> listarPedidosEmAberto();
+
+
+    List<Pedido> listarPedidosAguardandoPagamento();
 }

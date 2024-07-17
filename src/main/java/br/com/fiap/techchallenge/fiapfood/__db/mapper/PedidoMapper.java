@@ -1,5 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.__db.mapper;
 
+import br.com.fiap.techchallenge.fiapfood.__adapters.PedidoResponse;
 import br.com.fiap.techchallenge.fiapfood.__db.PedidoEntity;
 import br.com.fiap.techchallenge.fiapfood._domain.entity.Pedido;
 
@@ -21,7 +22,22 @@ public class PedidoMapper {
                 entity.getId(),
                 ClienteMapper.mapToEntity(entity.getCliente()),
                 entity.getStatus(),
+                entity.getData(),
                 ItemPedidoMapper.mapListToORM(entity.getListItens())
+        );
+    }
+
+    public static Pedido mapToEntity(PedidoResponse pedidoResponse) {
+        if (pedidoResponse == null) {
+            return null;
+        }
+
+        return new Pedido(
+                pedidoResponse.getId(),
+                pedidoResponse.getCliente(),
+                pedidoResponse.getStatus(),
+                pedidoResponse.getData(),
+                pedidoResponse.getListItens()
         );
     }
 
@@ -34,6 +50,7 @@ public class PedidoMapper {
                 pedido.getId(),
                 ClienteMapper.mapToEntity(pedido.getCliente()),
                 pedido.getStatus(),
+                pedido.getData(),
                 ItemPedidoMapper.mapListaSimplesToEntity(pedido.getListItens())
         );
     }
@@ -44,6 +61,7 @@ public class PedidoMapper {
             list.add(Pedido.builder()
                     .id(pedidoEntity.getId())
                     .cliente(ClienteMapper.mapToEntity(pedidoEntity.getCliente()))
+                            .data(pedidoEntity.getData())
                     .status(pedidoEntity.getStatus())
                     .listItens(ItemPedidoMapper.mapListToORM(pedidoEntity.getListItens())).build()
             );

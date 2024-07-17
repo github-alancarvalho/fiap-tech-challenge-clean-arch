@@ -7,8 +7,6 @@ import br.com.fiap.techchallenge.fiapfood.__presenters.CategoriaJsonPresenter;
 import br.com.fiap.techchallenge.fiapfood.__presenters.CategoriaPresenter;
 import br.com.fiap.techchallenge.fiapfood.__usecases.CategoriaUseCase;
 import br.com.fiap.techchallenge.fiapfood.__usecases.CategoriaUseCaseBoundary;
-import br.com.fiap.techchallenge.fiapfood._infra_apagar.gateway_apagar.CategoriaRepositoryApagarImpl;
-import br.com.fiap.techchallenge.fiapfood._infra_apagar.persistence.CategoriaRepository_apagar;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,8 +34,5 @@ public class CategoriaConfig {
         return new CategoriaGatewayDataMapper();
     }
 
-    @Bean
-    CategoriaRepository_apagar categoriaRepository(){
-        return new CategoriaRepositoryApagarImpl();
-    }
+
 }
