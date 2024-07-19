@@ -8,7 +8,6 @@ services:
     container_name: mariadb-techchallenge
     volumes:
       - mariadbnew_data:/var/lib/mariadbnew
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - MARIADB_ROOT_PASSWORD=rootroot
       - MARIADB_DATABASE=tech-challenge
@@ -33,10 +32,12 @@ services:
     depends_on:
       - mariadb-techchallenge
     environment:
-      - MARIADB_DATABASE_ENDPOINT=mariadb-techchallenge:3306
+      - MARIADB_DATABASE_ENDPOINT=mariadb-techchallenge:3336
       - MARIADB_DATABASE=tech-challenge
       - MARIADB_USER=fiap
       - MARIADB_PASSWORD=fiap
+      - TOKEN_MERCADO_PAGO=TEST-1882441822874146-071123-2bd1432e98f1efc3e1ff3a4ae6ecd79e-1229643287
+      - NOTIFICATION_MP_URL=http://awsapp.com/api/v1/Pagamentos
     ports:
       - "8080:8080"
     restart: unless-stopped

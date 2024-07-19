@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class PagamentoEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     //@OneToOne
