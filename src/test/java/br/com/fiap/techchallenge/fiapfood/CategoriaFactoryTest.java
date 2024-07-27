@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.fiapfood;
 
 
-import br.com.fiap.techchallenge.fiapfood._domain.ICategoria;
-import br.com.fiap.techchallenge.fiapfood._domain.ICategoriaFactory;
-import br.com.fiap.techchallenge.fiapfood._domain.factory.CategoriaFactory;
+import br.com.fiap.techchallenge.fiapfood.core.ICategoria;
+import br.com.fiap.techchallenge.fiapfood.core.ICategoriaFactory;
+import br.com.fiap.techchallenge.fiapfood.core.factory.CategoriaFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;

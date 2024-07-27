@@ -1,8 +1,6 @@
-package br.com.fiap.techchallenge.fiapfood.__adapters;
+package br.com.fiap.techchallenge.fiapfood.core.entity;
 
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPedido;
-import br.com.fiap.techchallenge.fiapfood.core.entity.Cliente;
-import br.com.fiap.techchallenge.fiapfood.core.entity.ItemPedido;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -14,24 +12,27 @@ import java.util.List;
 @Data
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PedidoResponse {
+public class Pedido {
 
     private Long id;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Cliente cliente;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private StatusPedido status;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private LocalDateTime data;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<ItemPedido> listItens = new ArrayList<>();
 
-    public PedidoResponse() {
+    public Pedido() {
     }
 
-    public PedidoResponse(Long id, Cliente cliente, StatusPedido status, LocalDateTime data, List<ItemPedido> listItens) {
+    public Pedido(Long id, Cliente cliente, StatusPedido status, LocalDateTime data, List<ItemPedido> listItens) {
         this.id = id;
         this.cliente = cliente;
         this.status = status;
-        this.listItens = listItens;
         this.data = data;
+        this.listItens = listItens;
     }
 
     public Long getId() {
@@ -58,19 +59,19 @@ public class PedidoResponse {
         this.status = status;
     }
 
-    public List<ItemPedido> getListItens() {
-        return listItens;
-    }
-
-    public void setListItens(List<ItemPedido> listItens) {
-        this.listItens = listItens;
-    }
-
     public LocalDateTime getData() {
         return data;
     }
 
     public void setData(LocalDateTime data) {
         this.data = data;
+    }
+
+    public List<ItemPedido> getListItens() {
+        return listItens;
+    }
+
+    public void setListItens(List<ItemPedido> listItens) {
+        this.listItens = listItens;
     }
 }

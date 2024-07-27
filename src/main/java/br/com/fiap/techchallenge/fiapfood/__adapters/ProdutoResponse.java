@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.__adapters;
 
-import br.com.fiap.techchallenge.fiapfood._domain.entity.Categoria;
+import br.com.fiap.techchallenge.fiapfood.core.entity.Categoria;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
