@@ -1,11 +1,10 @@
 package br.com.fiap.techchallenge.fiapfood.adapters.presenters;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoResponse;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoResponse;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoJsonPresenter implements ProdutoPresenter{

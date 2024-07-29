@@ -1,8 +1,8 @@
 package br.com.fiap.techchallenge.fiapfood.core.usecases;
 
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.*;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.*;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.ItemPedidoGateway;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.PedidoGateway;
 import br.com.fiap.techchallenge.fiapfood.core.entity.*;
@@ -263,7 +263,7 @@ public class PedidoUseCase implements PedidoUseCaseBoundary {
 
             Double valorTotalPedido = calcularValorTotalDoPedido(pedido);
 
-            Pagamento2 pagamento = pagamentoUseCaseBoundary.prepararPagamento(pedidoResponse.getCliente(), pedido, valorTotalPedido, DadosPagamentoMapper.mapFromRequestToEntity(pedidoRequest.getDadosPagamento()));
+            Pagamento pagamento = pagamentoUseCaseBoundary.prepararPagamento(pedidoResponse.getCliente(), pedido, valorTotalPedido, DadosPagamentoMapper.mapFromRequestToEntity(pedidoRequest.getDadosPagamento()));
 
             return pagamentoUseCaseBoundary.efetuarPagamentoViaCartao(pagamento);
         } catch (Exception err) {

@@ -1,59 +1,73 @@
 package br.com.fiap.techchallenge.fiapfood.core.entity;
 
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Pagamento {
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long id;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long idPedido;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private StatusPagamento status;
-
-    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Long idPagamento;
+    private Cliente cliente;
+    private Pedido pedido;
+    private String status;
     private Double valor;
+    private CartaoCredito cartaoCredito;
 
     public Pagamento() {
 
     }
 
-    public Pagamento(Long id, Long idPedido, StatusPagamento status, Double valor) {
-        this.id = id;
-        this.idPedido = idPedido;
+    public Pagamento(Long idPagamento, Cliente cliente, Pedido pedido, String status, Double valor, CartaoCredito cartaoCredito) {
+        this.idPagamento = idPagamento;
+        this.cliente = cliente;
+        this.pedido = pedido;
         this.status = status;
         this.valor = valor;
+        this.cartaoCredito = cartaoCredito;
     }
 
-    public Long getId() {
-        return id;
+    public Pagamento criarPagamentoSemClienteSemDadosDeCartao(Long idPagamento, Long idPedido, StatusPagamento status, Double valor) {
+
+        return Pagamento.builder()
+                .idPagamento(idPagamento)
+                .pedido(Pedido.builder().id(idPedido).build())
+                .status(status.toString())
+                .valor(valor)
+                .build();
+
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getIdPagamento() {
+        return idPagamento;
     }
 
-    public Long getIdPedido() {
-        return idPedido;
+    public void setIdPagamento(Long idPagamento) {
+        this.idPagamento = idPagamento;
     }
 
-    public void setIdPedido(Long idPedido) {
-        this.idPedido = idPedido;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public StatusPagamento getStatus() {
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(StatusPagamento status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -63,5 +77,13 @@ public class Pagamento {
 
     public void setValor(Double valor) {
         this.valor = valor;
+    }
+
+    public CartaoCredito getCartaoCredito() {
+        return cartaoCredito;
+    }
+
+    public void setCartaoCredito(CartaoCredito cartaoCredito) {
+        this.cartaoCredito = cartaoCredito;
     }
 }

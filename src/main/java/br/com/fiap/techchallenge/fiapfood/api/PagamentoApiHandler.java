@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.AtualizarPagamentoRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.PagamentoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.AtualizarPagamentoRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.PagamentoResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.PagamentoController;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoJsonPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
@@ -22,11 +22,11 @@ import java.util.Optional;
 @Tag(name = "PagamentoEntity API")
 @RestController
 @RequestMapping("/api/v1/Pagamentos")
-public class PagamentoApi {
+public class PagamentoApiHandler {
 
     private final PagamentoController pagamentoController;
 
-    public PagamentoApi(PagamentoController pagamentoController) {
+    public PagamentoApiHandler(PagamentoController pagamentoController) {
         this.pagamentoController = pagamentoController;
     }
 
@@ -54,7 +54,7 @@ public class PagamentoApi {
                 Map<String, Object> dataMap = (Map<String, Object>) idValue;
                 String idPagamento = (String) dataMap.get("id");
                 System.out.println("Extracted ID: " + idPagamento);
-                return ResponseEntity.ok(this.pagamentoController.receberConfirmacaoDePagamento(Long.valueOf(idPagamento)));
+                return ResponseEntity.ok(this.pagamentoController.receberConfirmacaoDePagamento(Long.valueOf(idPagamento), new PagamentoJsonPresenter()));
             } else {
                 System.out.println("Unexpected data format for 'data'");
                 return ResponseEntity.notFound().build();

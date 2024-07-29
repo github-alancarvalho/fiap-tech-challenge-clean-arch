@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood.__adapters;
+package br.com.fiap.techchallenge.fiapfood.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.core.mapper;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.ItemPedidoRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ItemPedidoRequest;
 import br.com.fiap.techchallenge.fiapfood.core.entity.ItemPedido;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Pedido;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Produto;

@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood.__adapters;
+package br.com.fiap.techchallenge.fiapfood.dto;
 
 public class PagamentoPixResponse {
 

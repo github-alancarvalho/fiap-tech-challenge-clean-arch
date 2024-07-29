@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.fiapfood.core.usecases;
 
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.ClienteRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.ClienteResponse;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.ClienteRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ClienteResponse;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.ClienteGateway;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Cliente;
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.Cpf;

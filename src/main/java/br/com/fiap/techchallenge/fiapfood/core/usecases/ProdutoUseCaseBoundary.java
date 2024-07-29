@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.fiapfood.core.usecases;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoPostRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoPutRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoResponse;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoPostRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoPutRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoResponse;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Categoria;
 
 import java.util.List;

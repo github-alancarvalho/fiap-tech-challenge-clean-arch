@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood.__adapters;
+package br.com.fiap.techchallenge.fiapfood.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class PagamentoRequest {
+public class PagamentoResponse {
 
     @NotEmpty(message = "Id não pode ser vazio")
     @NotNull(message = "Id não pode ser nulo")
@@ -33,10 +33,10 @@ public class PagamentoRequest {
     private Double valor;
 
 
-    public PagamentoRequest() {
+    public PagamentoResponse() {
     }
 
-    public PagamentoRequest(Long id, Long idPedido, String status, Double valor) {
+    public PagamentoResponse(Long id, Long idPedido, String status, Double valor) {
         this.id = id;
         this.idPedido = idPedido;
         this.status = status;

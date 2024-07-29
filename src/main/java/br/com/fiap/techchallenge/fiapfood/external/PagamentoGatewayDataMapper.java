@@ -1,17 +1,16 @@
 package br.com.fiap.techchallenge.fiapfood.external;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.PagamentoPixResponse;
-import br.com.fiap.techchallenge.fiapfood.external.mapper.PagamentoMapper;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.PagamentoPixResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.PagamentoGateway;
-import br.com.fiap.techchallenge.fiapfood.core.entity.Pagamento2;
-import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
 import br.com.fiap.techchallenge.fiapfood.core.entity.CartaoCredito;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Pagamento;
+import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import br.com.fiap.techchallenge.fiapfood.external.entities.Cardholder;
 import br.com.fiap.techchallenge.fiapfood.external.entities.CartaoCreditoEntity;
 import br.com.fiap.techchallenge.fiapfood.external.entities.Identification;
 import br.com.fiap.techchallenge.fiapfood.external.entities.PagamentoEntity;
+import br.com.fiap.techchallenge.fiapfood.external.mapper.PagamentoMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -50,21 +49,21 @@ public class PagamentoGatewayDataMapper extends GenericDaoImpl<PagamentoEntity> 
     @Override
     public Pagamento salvarDadosPagamento(Pagamento pagamento) {
 
-        PagamentoEntity entity = PagamentoMapper.mapToEntity(pagamento);
-        return PagamentoMapper.mapToEntity(save(entity));
+        PagamentoEntity entity = PagamentoMapper.mapToEntity2(pagamento);
+        return PagamentoMapper.mapToEntity2(save(entity));
     }
 
     @Override
     public Pagamento atualizarStatusPagamento(Pagamento pagamento, StatusPagamento status) {
-        PagamentoEntity entity = PagamentoMapper.mapToEntity(buscarPagamentoPorId(pagamento.getId()));
+        PagamentoEntity entity = PagamentoMapper.mapToEntity2(buscarPagamentoPorId(pagamento.getIdPagamento()));
         entity.setStatus(status);
-        return PagamentoMapper.mapToEntity(update(entity));
+        return PagamentoMapper.mapToEntity2(update(entity));
     }
 
     @Override
     public Pagamento buscarPagamentoPorId(Long id) {
         PagamentoEntity entity = findById(id);
-        return PagamentoMapper.mapToEntity(entity);
+        return PagamentoMapper.mapToEntity2(entity);
     }
 
     @Override
@@ -77,17 +76,17 @@ public class PagamentoGatewayDataMapper extends GenericDaoImpl<PagamentoEntity> 
         criteriaQuery.where(criteriaBuilder.equal(root.get("idPedido"), id));
 
         PagamentoEntity result = entityManager.createQuery(criteriaQuery).getSingleResult();
-        return PagamentoMapper.mapToEntity(result);
+        return PagamentoMapper.mapToEntity2(result);
 
     }
 
     @Override
     public List<Pagamento> listarPagamentos() {
-        return PagamentoMapper.mapListToEntity(findAll());
+        return PagamentoMapper.mapListToEntity2(findAll());
     }
 
     @Override
-    public Pagamento2 efetuarPagamentoViaCartao(Pagamento2 pagamento2) {
+    public Pagamento efetuarPagamentoViaCartao(Pagamento pagamento2) {
 
         try {
             String token = gerarTokenCartaoCredito(pagamento2.getCartaoCredito());
@@ -108,7 +107,7 @@ public class PagamentoGatewayDataMapper extends GenericDaoImpl<PagamentoEntity> 
     }
 
 
-    private Payment getCreatedPayment(Pagamento2 pagamento2, String token) throws MPException, MPApiException {
+    private Payment getCreatedPayment(Pagamento pagamento2, String token) throws MPException, MPApiException {
         PaymentClient paymentClient = new PaymentClient();
 
         String resumoItens = pagamento2.getPedido().getListItens().stream()
@@ -124,7 +123,7 @@ public class PagamentoGatewayDataMapper extends GenericDaoImpl<PagamentoEntity> 
                         .paymentMethodId("visa")
                         .token(token)
                         .installments(1)
-                        .notificationUrl(System.getenv("NOTIFICATION_MP_URL"))
+//                        .notificationUrl(System.getenv("NOTIFICATION_MP_URL"))
                         .payer(
                                 PaymentPayerRequest.builder()
                                         .email(pagamento2.getCliente().getEmail())
@@ -227,7 +226,7 @@ public class PagamentoGatewayDataMapper extends GenericDaoImpl<PagamentoEntity> 
     }
 
     @Override
-    public PagamentoPixResponse efetuarPagamentoViaPix(Pagamento2 pagamento2) {
+    public PagamentoPixResponse efetuarPagamentoViaPix(Pagamento pagamento2) {
         try {
             MercadoPagoConfig.setAccessToken(mercadoPagoAccessToken);
 

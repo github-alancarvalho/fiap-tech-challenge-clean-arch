@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood.__adapters;
+package br.com.fiap.techchallenge.fiapfood.dto;
 
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPedido;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Cliente;

@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.core.usecases;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.*;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.*;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPedido;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Pedido;
 

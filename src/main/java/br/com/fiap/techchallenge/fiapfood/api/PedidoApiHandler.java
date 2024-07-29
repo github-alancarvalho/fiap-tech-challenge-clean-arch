@@ -1,14 +1,13 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.AlterarProgressoPedidoRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.PagamentoResponse;
-import br.com.fiap.techchallenge.fiapfood.__adapters.PedidoRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.PedidoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.AlterarProgressoPedidoRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.PagamentoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.PedidoRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.PedidoResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.PedidoController;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoJsonPresenter;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PedidoJsonPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPedido;
-import br.com.fiap.techchallenge.fiapfood.core.entity.Pedido;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -21,11 +20,11 @@ import java.util.Optional;
 @Tag(name = "PedidoEntity API")
 @RestController
 @RequestMapping("/api/v1/Pedidos")
-public class PedidoApi {
+public class PedidoApiHandler {
 
     private final PedidoController pedidoController;
 
-    public PedidoApi(PedidoController pedidoController) {
+    public PedidoApiHandler(PedidoController pedidoController) {
         this.pedidoController = pedidoController;
     }
 

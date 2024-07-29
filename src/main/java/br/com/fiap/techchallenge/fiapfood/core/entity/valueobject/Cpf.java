@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.core.entity.valueobject;
 
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 

@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.CategoriaResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.CategoriaResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.CategoriaController;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.CategoriaJsonPresenter;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,11 +15,11 @@ import java.util.List;
 @Tag(name = "Categoria API")
 @RestController
 @RequestMapping("/api/v1/Categoria")
-public class CategoriaApi {
+public class CategoriaApiHandler {
 
     private CategoriaController categoriaController;
 
-    public CategoriaApi(CategoriaController categoriaController) {
+    public CategoriaApiHandler(CategoriaController categoriaController) {
         this.categoriaController = categoriaController;
     }
 

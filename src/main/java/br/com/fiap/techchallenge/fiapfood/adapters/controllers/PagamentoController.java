@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.adapters.controllers;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.*;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.*;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.PagamentoUseCaseBoundary;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.PedidoUseCaseBoundary;
@@ -97,7 +97,7 @@ public class PagamentoController {
         }
     }
 
-    public String receberConfirmacaoDePagamento(Long idPagamento) {
+    public String receberConfirmacaoDePagamento(Long idPagamento, PagamentoPresenter pagamentoPresenter) {
 
         try {
             String detalhesPagamento = this.pagamentoUseCaseBoundary.getDetalhesDoPagamento(idPagamento);

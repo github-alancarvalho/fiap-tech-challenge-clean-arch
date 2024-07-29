@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.adapters.presenters;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.CategoriaResponse;
-import br.com.fiap.techchallenge.fiapfood.__exceptions.FiapFoodException;
+import br.com.fiap.techchallenge.fiapfood.dto.CategoriaResponse;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 
 import java.util.ArrayList;
 import java.util.List;

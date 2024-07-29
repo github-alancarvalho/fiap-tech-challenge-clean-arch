@@ -1,6 +1,6 @@
 package br.com.fiap.techchallenge.fiapfood.core.mapper;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.PedidoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.PedidoResponse;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Pedido;
 
 public class PedidoResponseMapper {

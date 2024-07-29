@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.ClienteRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.ClienteResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.ClienteRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ClienteResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.ClienteController;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ClienteDefaultPresenter;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,11 +16,11 @@ import java.util.Optional;
 @Tag(name = "ClienteEntity API")
 @RestController
 @RequestMapping("/api/v1/Clientes")
-public class ClienteApi {
+public class ClienteApiHandler {
 
     private final ClienteController clienteController;
 
-    public ClienteApi(ClienteController clienteController) {
+    public ClienteApiHandler(ClienteController clienteController) {
         this.clienteController = clienteController;
 
     }

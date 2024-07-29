@@ -1,8 +1,8 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoPostRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoPutRequest;
-import br.com.fiap.techchallenge.fiapfood.__adapters.ProdutoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoPostRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoPutRequest;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.ProdutoController;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ProdutoJsonPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Produto;
@@ -18,11 +18,11 @@ import java.util.Optional;
 @Tag(name = "ProdutoEntity API")
 @RestController
 @RequestMapping("/api/v1/Produtos")
-public class ProdutoApi {
+public class ProdutoApiHandler {
 
     private final ProdutoController produtoController;
 
-    public ProdutoApi(ProdutoController produtoController) {
+    public ProdutoApiHandler(ProdutoController produtoController) {
         this.produtoController = produtoController;
     }
 
