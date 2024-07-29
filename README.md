@@ -22,23 +22,31 @@ Desafio desenvolvido com DDD, Docker e Arquitetura Hexagonal para o curso de Sof
 ## Requisitos mínimos
 - git
 - docker e docker-compose
+- Kubectl
+- Conta no mercado pago para simulação dos pagamentos
 
 ## Como rodar
 Clone este repositório
 ```bash
 $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
-```
+
+
 - Abra o projeto na IDE de sua preferência
+- Configure as varíaveis de ambiente dos arquivos .yaml localizados na pasta infra/k8s
 
 - No terminal
-  docker compose up
-
-- Quando os containers estiverem rodando com sucesso, executar os comandos abaixo para efetuar a carga inicial das categorias.
-  - docker exec -it mariadb-techchallenge bash
-  - apt-get update
-  - apt-get install mysql-client
-  - mysql -u root -prootroot tech-challenge < /docker-entrypoint-initdb.d/init.sql
-  - exit
+  cd infra/k8s
+  kubectl apply -f 01-aws-storage-class.yaml
+  kubectl apply -f 02-aws-pv.yaml
+  kubectl apply -f 03-aws-pvc.yaml
+  kubectl apply -f 04-aws-mariadb-techchallenge-deployment.yaml
+  kubectl apply -f 05-aws-mariadb-techchallenge-service.yaml
+  kubectl apply -f 06-aws-api-deployment.yaml
+  kubectl apply -f 07-aws-api-service.yaml
+  kubectl apply -f 08-HPA.yaml
+  kubectl apply -f high-availability.yaml
+  kubectl apply -f metrics.yaml
+  
 
 
 ## Problema
@@ -166,207 +174,9 @@ https://youtu.be/9V6KqR_jfvk
 
 ### Api
 - Swagger: http://localhost:8080/swagger-ui/index.html
+- Link Collections do postman - https://github.com/github-alancarvalho/fiap-tech-challenge-clean-arch/blob/03fa995cfb80fcd1af720239d655fadd2b64d491/docs/postman/FiapFood%20-%20Tech%20Challenge.postman_collection.json
 
 
-#############################Cliente API#############################
-
----------------INSERIR---------------
-
-http://localhost:8080/api/v1/ClientesORM/inserir
-
-{
-"nome": "Zezinho da Silva",
-"cpf": "86954751073",
-"telefone": "44444444444",
-"email": "zezinho@aaa.com"  
-}
-
-http://localhost:8080/api/v1/ClientesORM/inserir
-
-{
-"nome": "Nome para ser excluido",
-"cpf": "29429548093",
-"telefone": "44444444444",
-"email": "zezinho222@aaa.com"  
-}
-
-
----------------Buscar por Cpf---------------
-
-http://localhost:8080/api/v1/ClientesORM/buscarClientePorCpf?cpf=86954751073
-
-
-
----------------Buscar Tudo - Buscar todos os clientes---------------
-
-http://localhost:8080/api/v1/ClientesORM/buscarTudo
-
-
----------------Alterar clienteEntity---------------
-
-http://localhost:8080/api/v1/ClientesORM/alterar
-
-{
-"nome": "Zezinho da silva e silva",
-"cpf": "86954751073",
-"telefone": "11123456789",
-"email": "11111111@aaa.com"  
-}
-
-
----------------Excluir clienteEntity---------------
-
-http://localhost:8080/api/v1/ClientesORM/excluir?cpf=29429548093
-
-
-
-#############################Produto API#############################
-
----------------Inserir produtoEntity----------------
-
-http://localhost:8080/api/v1/ProdutosORM/inserir
-
-
-{
-"nome": "Sanduba sorte 8",
-"descricao": "nem queira saber 8",
-"categoriaId": 1,
-"preco": "30.00"  
-}
-
-http://localhost:8080/api/v1/ProdutosORM/inserir
-
-
-{
-"nome": "Bebida para ser excluída",
-"descricao": "Bebida para ser excluída",
-"categoriaId": 4,
-"preco": "10.00"  
-}
-
-http://localhost:8080/api/v1/ProdutosORM/inserir
-
-
-{
-"nome": "Acompanhamento XXXX",
-"descricao": "Acompanhamento XXX",
-"categoriaId": 2,
-"preco": "10.00"  
-}
-
-
-
----------------Buscar produtoEntity por id----------------
-
-http://localhost:8080/api/v1/ProdutosORM/buscarProdutoPorId?id=1
-
-
----------------Buscar todos os produtos----------------
-
-http://localhost:8080/api/v1/ProdutosORM/buscarTudo
-
----------------Buscar produtos por categoriaEntity----------------
-
-http://localhost:8080/api/v1/ProdutosORM/buscarProdutosPorCategoria?id=1
-
-//1: Lanche
-//2: Acompanhamento
-//3: Sobremesa
-//4: Bebida
-
----------------Alterar produtoEntity----------------
-
-http://localhost:8080/api/v1/ProdutosORM/alterar
-
-{
-"id": 1,
-"nome": "Sanduba viva a vida 999",
-"descricao": "Vivaaaaaaaaa 999",
-"categoriaId": 2,
-"preco": 788.9
-}
-
----------------Excluir produtoEntity----------------
-
-http://localhost:8080/api/v1/ProdutosORM/excluir?id=2
-
-
-
-#############################Pedido API#############################
-
----------------Checkout pedidoEntity----------------
-
-http://localhost:8080/api/v1/PedidosORM/checkout
-
-{
-"cpfCliente":"86954751073",
-
-    "listItens":[
-        {
-            "produtoEntity":{
-                "id":1
-            },
-            "quantidade":77
-        },
-        {
-            "produtoEntity":{
-                "id":3
-            },
-            "quantidade":73
-        }
-    ]
-
-}
-
----------------Buscar todos os pedidos----------------
-
-http://localhost:8080/api/v1/PedidosORM/buscarTudo
-
-
----------------Buscar pedidos por status----------------
-
-http://localhost:8080/api/v1/PedidosORM/buscarPedidosPorStatus?status=RECEBIDO
-http://localhost:8080/api/v1/PedidosORM/buscarPedidosPorStatus?status=EM_PREPARACAO
-http://localhost:8080/api/v1/PedidosORM/buscarPedidosPorStatus?status=PRONTO
-http://localhost:8080/api/v1/PedidosORM/buscarPedidosPorStatus?status=ENTREGUE
-
-
----------------Buscar pedidos em aberto----------------
-
-http://localhost:8080/api/v1/PedidosORM/buscarPedidosEmAberto
-
-
----------------Buscar pedidoEntity por Id----------------
-
-http://localhost:8080/api/v1/PedidosORM/buscarPedidoPorId?id=1
-
----------------Alterar progresso do pedidoEntity----------------
-
-http://localhost:8080/api/v1/PedidosORM/alterarProgresso?status=EM_PREPARACAO
-
-{
-"id": 1
-}
-
----------------Excluir pedidoEntity----------------
-
-http://localhost:8080/api/v1/PedidosORM/excluir?id=1
-
-
-
-#############################Pagamento API#############################
-
----------------Buscar todos os pagamentos----------------
-
-http://localhost:8080/api/v1/PagamentosORM/buscarTodosPagamentos
-
----------------Atualizar status do pagamentoEntity----------------
-
-http://localhost:8080/api/v1/PagamentosORM/atualizarProgressoPagamento?status=CONFIRMADO
-
-{
-"id": 1
-}
 
 ## Autor
 - [Alan Carvalho](https://github.com/github-alancarvalho)
