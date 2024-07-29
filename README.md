@@ -161,7 +161,8 @@ Etapas do Progresso do Pedido:
 
 ![FiapFood vpd](https://github.com/user-attachments/assets/7339fda5-6333-458d-8143-34e0146bb5e7)
 
-
+### Link do vídeo
+https://youtu.be/9V6KqR_jfvk
 
 ### Api
 - Swagger: http://localhost:8080/swagger-ui/index.html
