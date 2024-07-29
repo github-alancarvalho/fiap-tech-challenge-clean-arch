@@ -90,18 +90,18 @@ public class PagamentoApiHandler {
         }
     }
 
-    @Operation(summary = "Atualizar pagamento", description = "Alterar pagamento. Id é mandatório")
-    @PutMapping("/{atualizarPagamento}")
-    public ResponseEntity<PagamentoResponse> atualizarPagamento(@Valid @RequestBody AtualizarPagamentoRequest atualizarPagamentoRequest, @RequestParam("status")StatusPagamento status) {
-
-        PagamentoResponse pagamento = this.pagamentoController.atualizarPagamento(atualizarPagamentoRequest, status, new PagamentoJsonPresenter());
-
-        if (pagamento != null) {
-            return ResponseEntity.ok(pagamento);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+//    @Operation(summary = "Atualizar pagamento", description = "Alterar pagamento. Id é mandatório")
+//    @PutMapping("/{atualizarPagamento}")
+//    public ResponseEntity<PagamentoResponse> atualizarPagamento(@Valid @RequestBody AtualizarPagamentoRequest atualizarPagamentoRequest, @RequestParam("status")StatusPagamento status) {
+//
+//        PagamentoResponse pagamento = this.pagamentoController.atualizarPagamento(atualizarPagamentoRequest, status, new PagamentoJsonPresenter());
+//
+//        if (pagamento != null) {
+//            return ResponseEntity.ok(pagamento);
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     @Operation(summary = "Buscar todos os pagamentos", description = "Buscar todos os pagamentos")
     @GetMapping("/buscarTodosPagamentos")

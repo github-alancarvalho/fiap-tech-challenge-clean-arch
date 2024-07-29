@@ -1,0 +1,730 @@
+{
+	"info": {
+		"_postman_id": "33eab7c5-1971-451f-97b3-8e92835f0605",
+		"name": "FiapFood - Tech Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Cliente - Alterar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Jao da silva e silva\", \r\n  \"cpf\": \"86954751073\",\r\n  \"telefone\": \"11123456700\",\r\n  \"email\": \"1111110001@aaa.com\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Clientes/alterar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Clientes",
+								"alterar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente - Inserir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Zezinho da Silva\", \r\n  \"cpf\": \"86954751073\",\r\n  \"telefone\": \"44444444444\",\r\n  \"email\": \"zezinho@aaa.com\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Clientes/inserir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Clientes",
+								"inserir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente - Buscar tudo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Clientes/buscarTudo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Clientes",
+								"buscarTudo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente - Buscar por CPF",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Clientes/buscarClientePorCpf?cpf=86954751073",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Clientes",
+								"buscarClientePorCpf"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "86954751073"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cliente - Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Clientes/excluir?cpf=86954751073",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Clientes",
+								"excluir"
+							],
+							"query": [
+								{
+									"key": "cpf",
+									"value": "86954751073"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Produto - Inserir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Batata Smiles\", \r\n  \"descricao\": \"Batata crocante Balde\",\r\n  \"categoriaId\": 2,\r\n  \"preco\": \"10.00\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Produtos/inserir",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Produtos",
+								"inserir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - Buscar por Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Produtos/buscarProdutoPorId?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Produtos",
+								"buscarProdutoPorId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - Buscar tudo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Produtos/buscarTudo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Produtos",
+								"buscarTudo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - Buscar por Categoria",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Produtos/buscarProdutosPorCategoria?id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Produtos",
+								"buscarProdutosPorCategoria"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - Alterar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 1,\r\n        \"nome\": \"Sanduba viva a vida 000\",\r\n        \"descricao\": \"Vivaaaaaaaaa 000\",\r\n        \"categoriaId\": 1,\r\n        \"preco\": 8.9\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Produtos/alterar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Produtos",
+								"alterar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto - Excluir",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "id",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Produtos/excluir?id=11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Produtos",
+								"excluir"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Pedido - Checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"cpfCliente\":\"86954751073\",\r\n\"dadosPagamento\":{\r\n        \"numeroCartao\":\"4235647728025682\",\r\n        \"anoVencimento\":\"2025\",\r\n        \"mesVencimento\":\"11\",\r\n        \"cvv\":\"123\",\r\n        \"nome\":\"APRO\",\r\n        \"cpf\":\"12345678909\"\r\n},\r\n\r\n\"listItens\":[\r\n    {\r\n        \"idProduto\":1\r\n        ,\r\n        \"quantidade\":1\r\n    },\r\n    {\r\n        \"idProduto\":2\r\n        ,\r\n        \"quantidade\":1\r\n    }\r\n]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pedidos/checkout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pedidos",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido - Buscar tudo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pedidos/buscarTudo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pedidos",
+								"buscarTudo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido - Buscar por status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pedidos/buscarPedidosPorStatus?status=EM_PREPARACAO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pedidos",
+								"buscarPedidosPorStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "EM_PREPARACAO"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido - Buscar Pedidos Em Aberto",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pedidos/buscarPedidosEmAberto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pedidos",
+								"buscarPedidosEmAberto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido - Alterar Progresso",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 75,\r\n  \"novoStatus\": \"PRONTO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pedidos/alterar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pedidos",
+								"alterar"
+							],
+							"query": [
+								{
+									"key": "cliente_cpf",
+									"value": "33860216899",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido - Buscar por Id ORM",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pedidos/buscarPedidoPorId?id=72",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pedidos",
+								"buscarPedidoPorId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "72"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pagamentos",
+			"item": [
+				{
+					"name": "Pagamento - Buscar todos pagamentos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pagamentos/buscarTodosPagamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pagamentos",
+								"buscarTodosPagamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagamento - Buscar Pagamento por ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pagamentos/buscarPagamentoPorId?id=1325490751",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pagamentos",
+								"buscarPagamentoPorId"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1325490751"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagamento - Buscar Pagamento por ID do Pedido",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\r\n        \"cpf\": 8989898        \r\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pagamentos/buscarPagamentoPorIdPedido?id=75",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pagamentos",
+								"buscarPagamentoPorIdPedido"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "75"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagamento - Processar Pagamento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"action\": \"payment.created\",\r\n  \"api_version\": \"v1\",\r\n  \"data\": {\r\n    \"id\": \"1325490751\"\r\n  },\r\n  \"date_created\": \"2024-07-26T21:05:16Z\",\r\n  \"id\": 1325490751,\r\n  \"live_mode\": false,\r\n  \"type\": \"payment\",\r\n  \"user_id\": \"1229643287\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/Pagamentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"Pagamentos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
