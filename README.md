@@ -27,7 +27,8 @@ Desafio desenvolvido com DDD, Docker e Arquitetura Hexagonal para o curso de Sof
 
 ## Como rodar
 Clone este repositório
-```bash
+```
+bash
 $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
 
 
@@ -48,7 +49,7 @@ $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
   kubectl apply -f metrics.yaml
   
 
-
+```
 ## Problema
 Há uma lanchonete de bairro que está expandindo devido seu grande sucesso. Porém, com a expansão e sem um sistema de controle de pedidos, o atendimento aos clientes pode ser caótico e confuso. Por exemplo, imagine que um clienteEntity faça um pedidoEntity complexo, como um hambúrguer personalizado com ingredientes específicos, acompanhado de batatas fritas e uma bebida. O atendente pode anotar o pedidoEntity em um papel e entregá-lo à cozinha, mas não há garantia de que o pedidoEntity será preparado corretamente.
 Sem um sistema de controle de pedidos, pode haver confusão entre os atendentes e a cozinha, resultando em atrasos na preparação e entrega dos pedidos. Os pedidos podem ser perdidos, mal interpretados ou esquecidos, levando à insatisfação dos clientes e a perda de negócios.
