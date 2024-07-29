@@ -80,6 +80,7 @@ Gerenciar produtos e categorias: Os produtos dispostos para escolha do clienteEn
 As informações dispostas no sistema de pedidos precisarão ser gerenciadas pelo estabelecimento através de um painel administrativo.
 
 ## Critérios de aceite
+### FASE 1
 Entregável 1: Documentação do sistema (DDD) com Event Storming, incluindo todos os passos/tipos de diagrama mostrados na aula 6 do módulo de DDD, e utilizando a linguagem ubíqua, dos seguintes fluxos:
 a. Realização do pedidoEntity e pagamentoEntity
 b. Preparação e entrega do pedidoEntity
@@ -97,6 +98,39 @@ APIs:
   Banco de dados à sua escolha - Inicialmente deveremos trabalhar e organizar a fila dos pedidos apenas em banco de dados
 
 Entregável 3: A aplicação deve ser entregue com um Dockerfile configurado para executá-la corretamente, e um docker-compose.yml para subir o ambiente completo.
+
+
+### FASE 2
+Entregável 1: Atualizar a aplicação desenvolvida na FASE 1 refatorando o código para seguir os padrões clean code e clean architecture:
+	a. Alterar/criar as APIs:
+
+                  i.	Checkout Pedido que deverá receber os produtos solicitados e retornar a identificação do pedido.                
+                  ii.	Consultar status pagamento pedido, que informa se o pagamento foi aprovado ou não.                
+                  iii.	Webhook para receber confirmação de pagamento aprovado ou recusado.                
+                  iv. A lista de pedidos deverá retorná-los com suas descrições, ordenados com a seguinte regra:  
+                      Pronto > Em Preparação > Recebido;
+                      Pedidos mais antigos primeiro e mais novos depois;
+                      Pedidos com status Finalizado não devem aparecer na lista.                
+                  v.	Atualizar o status do pedido.                
+                  vi.	Como desafio extra, opcionalmente, você pode implementar a integração com Mercado Pago para gerar o QRCode para pagamento e integrar com o WebHook para capturar os pagamentos. Caso contrário, será necessário realizar o mock da parte de pagamentos.
+                
+     
+Entregável 2: Criar uma arquitetura em Kubernetes que atenda os seguintes requisitos:
+    Os requisitos funcionais descritos nos itens anteriores (item problema).
+    Escalabilidade com aumento e diminuição de Pods conforme demanda.
+    Os arquivos manifestos (yaml) precisam estar no Github junto com a nova versão do código.
+            
+Entregável 3: Entrega da seguinte documentação no ReadMe
+             Desenho da arquitetura pensado por você, pessoa arquiteta de software, contemplando:
+                i.	Os requisitos do negócio (problema).
+                ii.	Os requisitos de infraestrutura: Você pode utilizar o MiniKube, Docker Kubernetes, AKS, EKS, GKE ou qualquer nuvem que você desenha. 
+                
+             Collection com todas as APIs desenvolvidas com exemplo de requisição (que não seja vazia):
+                i.	Link do Swagger no projeto ou link para download da collection do Postman (JSON).
+             
+             Guia completo com todas as instruções para execução do projeto e a ordem de execução das APIs, caso seja necessário.
+             Link para vídeo demonstrando a arquitetura desenvolvida na nuvem ou localmente
+            
 
 
 # Solução
