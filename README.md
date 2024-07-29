@@ -170,7 +170,7 @@ Etapas do Progresso do Pedido:
 
 ![FiapFood vpd](https://github.com/user-attachments/assets/7339fda5-6333-458d-8143-34e0146bb5e7)
 
-### Link do vídeo
+### Link do vídeo demonstrando a arquitetura na AWS e a aplicação rodando
 https://youtu.be/9V6KqR_jfvk
 
 ### Api
