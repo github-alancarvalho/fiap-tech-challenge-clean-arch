@@ -1,7 +1,7 @@
 package br.com.fiap.techchallenge.fiapfood.config;
 
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.ClienteController;
-import br.com.fiap.techchallenge.fiapfood.external.ClienteGatewayDataMapper;
+import br.com.fiap.techchallenge.fiapfood.external.ClienteGatewayImpl;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.ClienteGateway;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ClienteDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ClientePresenter;
@@ -31,7 +31,7 @@ public class ClienteConfig {
 
     @Bean
     ClienteGateway clienteRepositoryGateway() {
-        return new ClienteGatewayDataMapper();
+        return new ClienteGatewayImpl();
     }
 
 }

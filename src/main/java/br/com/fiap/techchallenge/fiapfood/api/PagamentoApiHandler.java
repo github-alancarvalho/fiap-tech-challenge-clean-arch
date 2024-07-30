@@ -1,16 +1,13 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
-import br.com.fiap.techchallenge.fiapfood.dto.AtualizarPagamentoRequest;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.dto.PagamentoResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.PagamentoController;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoJsonPresenter;
-import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -54,7 +51,7 @@ public class PagamentoApiHandler {
                 Map<String, Object> dataMap = (Map<String, Object>) idValue;
                 String idPagamento = (String) dataMap.get("id");
                 System.out.println("Extracted ID: " + idPagamento);
-                return ResponseEntity.ok(this.pagamentoController.receberConfirmacaoDePagamento(Long.valueOf(idPagamento), new PagamentoJsonPresenter()));
+                return ResponseEntity.ok(this.pagamentoController.receberConfirmacaoDePagamento(Long.valueOf(idPagamento), new PagamentoDefaultPresenter()));
             } else {
                 System.out.println("Unexpected data format for 'data'");
                 return ResponseEntity.notFound().build();
@@ -70,7 +67,7 @@ public class PagamentoApiHandler {
     @GetMapping("/buscarPagamentoPorId")
     public ResponseEntity<PagamentoResponse> buscarPagamentoPorId(@RequestParam("id") Long id) {
 
-        PagamentoResponse pagamento =  this.pagamentoController.buscarPagamentoPorId(id, new PagamentoJsonPresenter());
+        PagamentoResponse pagamento =  this.pagamentoController.buscarPagamentoPorId(id, new PagamentoDefaultPresenter());
         if (pagamento != null) {
             return ResponseEntity.ok(pagamento);
         } else {
@@ -82,7 +79,7 @@ public class PagamentoApiHandler {
     @GetMapping("/buscarPagamentoPorIdPedido")
     public ResponseEntity<PagamentoResponse> buscarPagamentoPorIdPedido(@RequestParam("id") Long id) {
 
-        PagamentoResponse pagamento =  this.pagamentoController.buscarPagamentoPorIdPedido(id, new PagamentoJsonPresenter());
+        PagamentoResponse pagamento =  this.pagamentoController.buscarPagamentoPorIdPedido(id, new PagamentoDefaultPresenter());
         if (pagamento != null) {
             return ResponseEntity.ok(pagamento);
         } else {
@@ -94,7 +91,7 @@ public class PagamentoApiHandler {
 //    @PutMapping("/{atualizarPagamento}")
 //    public ResponseEntity<PagamentoResponse> atualizarPagamento(@Valid @RequestBody AtualizarPagamentoRequest atualizarPagamentoRequest, @RequestParam("status")StatusPagamento status) {
 //
-//        PagamentoResponse pagamento = this.pagamentoController.atualizarPagamento(atualizarPagamentoRequest, status, new PagamentoJsonPresenter());
+//        PagamentoResponse pagamento = this.pagamentoController.atualizarPagamento(atualizarPagamentoRequest, status, new PagamentoDefaultPresenter());
 //
 //        if (pagamento != null) {
 //            return ResponseEntity.ok(pagamento);
@@ -106,7 +103,7 @@ public class PagamentoApiHandler {
     @Operation(summary = "Buscar todos os pagamentos", description = "Buscar todos os pagamentos")
     @GetMapping("/buscarTodosPagamentos")
     public ResponseEntity<Optional<List<PagamentoResponse>>> buscarTodosPagamentos() {
-        List<PagamentoResponse> pagamentos = pagamentoController.buscarTodosPagamentos(new PagamentoJsonPresenter());
+        List<PagamentoResponse> pagamentos = pagamentoController.buscarTodosPagamentos(new PagamentoDefaultPresenter());
 
         if (!pagamentos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(pagamentos));

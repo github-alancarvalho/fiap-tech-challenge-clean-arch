@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class ItemPedidoGatewayDataMapper extends GenericDaoImpl<ItemPedidoEntity> implements ItemPedidoGateway {
+public class ItemPedidoGatewayImpl extends GenericDaoImpl<ItemPedidoEntity> implements ItemPedidoGateway {
 
     private EntityManager entityManager;
 
-    public ItemPedidoGatewayDataMapper(){
+    public ItemPedidoGatewayImpl(){
         setClazz(ItemPedidoEntity.class);
         this.entityManager = (new ConnectionPoolManager()).getConnection().createEntityManager();
         setEntityManager(this.entityManager);

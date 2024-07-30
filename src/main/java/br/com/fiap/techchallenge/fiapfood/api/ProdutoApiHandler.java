@@ -4,7 +4,7 @@ import br.com.fiap.techchallenge.fiapfood.dto.ProdutoPostRequest;
 import br.com.fiap.techchallenge.fiapfood.dto.ProdutoPutRequest;
 import br.com.fiap.techchallenge.fiapfood.dto.ProdutoResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.ProdutoController;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ProdutoJsonPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ProdutoDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.entity.Produto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -30,7 +30,7 @@ public class ProdutoApiHandler {
     @PostMapping("/{inserir}")
     public ResponseEntity<Optional<ProdutoResponse>> inserir(@Valid @RequestBody ProdutoPostRequest produtoRequest) {
 
-        ProdutoResponse savedProduto = produtoController.inserir(produtoRequest, new ProdutoJsonPresenter());
+        ProdutoResponse savedProduto = produtoController.inserir(produtoRequest, new ProdutoDefaultPresenter());
 
         if (savedProduto != null)
             return ResponseEntity.ok(Optional.ofNullable(savedProduto));
@@ -43,7 +43,7 @@ public class ProdutoApiHandler {
     @GetMapping("/buscarProdutoPorId")
     public ResponseEntity<ProdutoResponse> buscarProdutoPorId(@RequestParam("id") Long id) {
 
-        ProdutoResponse produto =  this.produtoController.buscarProdutoPorId(id, new ProdutoJsonPresenter());
+        ProdutoResponse produto =  this.produtoController.buscarProdutoPorId(id, new ProdutoDefaultPresenter());
         if (produto != null) {
             return ResponseEntity.ok(produto);
         } else {
@@ -55,7 +55,7 @@ public class ProdutoApiHandler {
     @PutMapping("/{alterar}")
     public ResponseEntity<ProdutoResponse> alterar(@Valid @RequestBody ProdutoPutRequest produtoRequest) {
 
-        ProdutoResponse produto = this.produtoController.alterar(produtoRequest, new ProdutoJsonPresenter());
+        ProdutoResponse produto = this.produtoController.alterar(produtoRequest, new ProdutoDefaultPresenter());
 
         if (produto != null) {
             return ResponseEntity.ok(produto);
@@ -70,7 +70,7 @@ public class ProdutoApiHandler {
         Produto produto = Produto.builder()
                 .id(id).build();
 
-        Boolean isExcluded = produtoController.excluir(id, new ProdutoJsonPresenter());
+        Boolean isExcluded = produtoController.excluir(id, new ProdutoDefaultPresenter());
         if (Boolean.TRUE.equals(isExcluded))
             return ResponseEntity.noContent().build();
         else
@@ -80,7 +80,7 @@ public class ProdutoApiHandler {
     @Operation(summary = "Buscar todos os produtos", description = "Buscar todos os produtos")
     @GetMapping("/buscarTudo")
     public ResponseEntity<Optional<List<ProdutoResponse>>> buscarTudo() {
-        List<ProdutoResponse> produtos = produtoController.buscarTodosProdutos(new ProdutoJsonPresenter());
+        List<ProdutoResponse> produtos = produtoController.buscarTodosProdutos(new ProdutoDefaultPresenter());
 
         if (!produtos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(produtos));
@@ -93,7 +93,7 @@ public class ProdutoApiHandler {
     @GetMapping("/buscarProdutosPorCategoria")
     public ResponseEntity<Optional<List<ProdutoResponse>>> buscarProdutosPorCategoria(@RequestParam("id") Long id) {
 
-        List<ProdutoResponse> produtos = produtoController.buscarProdutosPorCategoria(id, new ProdutoJsonPresenter());
+        List<ProdutoResponse> produtos = produtoController.buscarProdutosPorCategoria(id, new ProdutoDefaultPresenter());
 
         if (!produtos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(produtos));

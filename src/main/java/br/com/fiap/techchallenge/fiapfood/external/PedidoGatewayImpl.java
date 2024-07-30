@@ -14,12 +14,12 @@ import jakarta.persistence.criteria.Root;
 import java.util.List;
 
 
-public class PedidoGatewayDataMapper extends GenericDaoImpl<PedidoEntity> implements PedidoGateway {
+public class PedidoGatewayImpl extends GenericDaoImpl<PedidoEntity> implements PedidoGateway {
 
     private EntityManager entityManager;
     private String statusField = "status";
 
-    public PedidoGatewayDataMapper() {
+    public PedidoGatewayImpl() {
         setClazz(PedidoEntity.class);
         this.entityManager = (new ConnectionPoolManager()).getConnection().createEntityManager();
         setEntityManager(this.entityManager);

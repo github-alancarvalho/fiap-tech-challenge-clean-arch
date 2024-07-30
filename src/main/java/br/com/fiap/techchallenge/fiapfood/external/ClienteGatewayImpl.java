@@ -9,9 +9,9 @@ import br.com.fiap.techchallenge.fiapfood.external.entities.ClienteEntity;
 import java.util.List;
 
 
-public class ClienteGatewayDataMapper extends GenericDaoImpl<ClienteEntity> implements ClienteGateway {
+public class ClienteGatewayImpl extends GenericDaoImpl<ClienteEntity> implements ClienteGateway {
 
-    public ClienteGatewayDataMapper(){
+    public ClienteGatewayImpl(){
         setClazz(ClienteEntity.class);
         setEntityManager((new ConnectionPoolManager()).getConnection().createEntityManager());
     }

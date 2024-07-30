@@ -6,7 +6,7 @@ import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriaJsonPresenter implements CategoriaPresenter{
+public class CategoriaDefaultPresenter implements CategoriaPresenter{
     @Override
     public CategoriaResponse prepararRespostaComSucesso(CategoriaResponse categoriaResponse) {
         return categoriaResponse;

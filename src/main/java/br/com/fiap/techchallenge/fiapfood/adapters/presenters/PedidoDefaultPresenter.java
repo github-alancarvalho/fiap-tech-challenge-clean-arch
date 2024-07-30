@@ -1,25 +1,25 @@
 package br.com.fiap.techchallenge.fiapfood.adapters.presenters;
 
-import br.com.fiap.techchallenge.fiapfood.dto.ProdutoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.PedidoResponse;
 import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-public class ProdutoJsonPresenter implements ProdutoPresenter{
+public class PedidoDefaultPresenter implements PedidoPresenter{
     @Override
-    public ProdutoResponse prepararRespostaComSucesso(ProdutoResponse produtoResponse) {
-        return produtoResponse;
+    public PedidoResponse prepararRespostaComSucesso(PedidoResponse pedidoResponse) {
+        return pedidoResponse;
     }
 
     @Override
-    public List<ProdutoResponse> prepararRespostaListaComSucesso(List<ProdutoResponse> listProdutoResponse) {
-        return listProdutoResponse;
+    public List<PedidoResponse> prepararRespostaListaComSucesso(List<PedidoResponse> listPedidoResponse) {
+        return listPedidoResponse;
     }
 
     @Override
-    public ProdutoResponse prepararRespostaVazia() {
+    public PedidoResponse prepararRespostaVazia() {
         return null;
     }
 
@@ -27,14 +27,13 @@ public class ProdutoJsonPresenter implements ProdutoPresenter{
     public Boolean prepararRespostaComErroExcluir(FiapFoodException err) {
         throw new ResponseStatusException(HttpStatus.CONFLICT, err.getMessage());
     }
-
     @Override
-    public ProdutoResponse prepararRespostaSemSucesso(FiapFoodException err) {
+    public PedidoResponse prepararRespostaSemSucesso(FiapFoodException err) {
         throw new ResponseStatusException(HttpStatus.CONFLICT, err.getMessage());
     }
 
     @Override
-    public List<ProdutoResponse> prepararRespostaListaSemSucesso(FiapFoodException err) {
+    public List<PedidoResponse> prepararRespostaListaSemSucesso(FiapFoodException err) {
         throw new ResponseStatusException(HttpStatus.CONFLICT, err.getMessage());
     }
 }

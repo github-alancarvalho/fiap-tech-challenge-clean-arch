@@ -1,12 +1,12 @@
 package br.com.fiap.techchallenge.fiapfood.api;
 
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoDefaultPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PedidoDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.dto.AlterarProgressoPedidoRequest;
 import br.com.fiap.techchallenge.fiapfood.dto.PagamentoResponse;
 import br.com.fiap.techchallenge.fiapfood.dto.PedidoRequest;
 import br.com.fiap.techchallenge.fiapfood.dto.PedidoResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.PedidoController;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoJsonPresenter;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PedidoJsonPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPedido;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -33,7 +33,7 @@ public class PedidoApiHandler {
     @GetMapping("/buscarPedidoPorId")
     public ResponseEntity<PedidoResponse> buscarPedidoPorId(@RequestParam("id") Long id) {
 
-        PedidoResponse pedido = this.pedidoController.buscarPedidoPorId(id, new PedidoJsonPresenter());
+        PedidoResponse pedido = this.pedidoController.buscarPedidoPorId(id, new PedidoDefaultPresenter());
         if (pedido != null) {
             return ResponseEntity.ok(pedido);
         } else {
@@ -45,7 +45,7 @@ public class PedidoApiHandler {
     @PutMapping("/{alterar}")
     public ResponseEntity<PedidoResponse> alterarProgressoPedido(@Valid @RequestBody AlterarProgressoPedidoRequest alterarProgressoPedidoRequest) {
 
-        PedidoResponse pedido = this.pedidoController.alterarProgressoPedido(alterarProgressoPedidoRequest, new PedidoJsonPresenter());
+        PedidoResponse pedido = this.pedidoController.alterarProgressoPedido(alterarProgressoPedidoRequest, new PedidoDefaultPresenter());
 
         if (pedido != null) {
             return ResponseEntity.ok(pedido);
@@ -60,7 +60,7 @@ public class PedidoApiHandler {
 //        Pedido pedido = Pedido.builder()
 //                .id(id).build();
 //
-//        Boolean isExcluded = pedidoController.excluir(id, new PedidoJsonPresenter());
+//        Boolean isExcluded = pedidoController.excluir(id, new PedidoDefaultPresenter());
 //        if (Boolean.TRUE.equals(isExcluded))
 //            return ResponseEntity.noContent().build();
 //        else
@@ -70,7 +70,7 @@ public class PedidoApiHandler {
     @Operation(summary = "Buscar todos os pedidos", description = "Buscar todos os pedidos")
     @GetMapping("/buscarTudo")
     public ResponseEntity<Optional<List<PedidoResponse>>> buscarTudo() {
-        List<PedidoResponse> pedidos = pedidoController.buscarTodosPedidos(new PedidoJsonPresenter());
+        List<PedidoResponse> pedidos = pedidoController.buscarTodosPedidos(new PedidoDefaultPresenter());
 
         if (!pedidos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(pedidos));
@@ -83,7 +83,7 @@ public class PedidoApiHandler {
     @GetMapping("/buscarPedidosPorStatus")
     public ResponseEntity<Optional<List<PedidoResponse>>> buscarPedidosPorStatus(@RequestParam("status") StatusPedido status) {
 
-        List<PedidoResponse> pedidos = pedidoController.buscarPedidosPorStatus(status, new PedidoJsonPresenter());
+        List<PedidoResponse> pedidos = pedidoController.buscarPedidosPorStatus(status, new PedidoDefaultPresenter());
 
         if (!pedidos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(pedidos));
@@ -97,7 +97,7 @@ public class PedidoApiHandler {
     @GetMapping("/buscarPedidosEmAberto")
     public ResponseEntity<Optional<List<PedidoResponse>>> buscarPedidosEmAberto() {
 
-        List<PedidoResponse> pedidos = pedidoController.buscarPedidosEmAberto(new PedidoJsonPresenter());
+        List<PedidoResponse> pedidos = pedidoController.buscarPedidosEmAberto(new PedidoDefaultPresenter());
 
         if (!pedidos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(pedidos));
@@ -110,7 +110,7 @@ public class PedidoApiHandler {
     @GetMapping("/buscarPedidosAguardandoPagamento")
     public ResponseEntity<Optional<List<PedidoResponse>>> buscarPedidosAguardandoPagamento() {
 
-        List<PedidoResponse> pedidos = pedidoController.buscarPedidosAguardandoPagamento(new PedidoJsonPresenter());
+        List<PedidoResponse> pedidos = pedidoController.buscarPedidosAguardandoPagamento(new PedidoDefaultPresenter());
 
         if (!pedidos.isEmpty()) {
             return ResponseEntity.ok(Optional.ofNullable(pedidos));
@@ -123,7 +123,7 @@ public class PedidoApiHandler {
     @PostMapping("/{checkout}")
     public ResponseEntity<PagamentoResponse> checkout(@Valid @RequestBody PedidoRequest pedidoRequest) {
 
-        PagamentoResponse pagamentoResponse = pedidoController.checkout(pedidoRequest, new PagamentoJsonPresenter());
+        PagamentoResponse pagamentoResponse = pedidoController.checkout(pedidoRequest, new PagamentoDefaultPresenter());
         if (pagamentoResponse != null) {
             return ResponseEntity.ok(pagamentoResponse);
         } else {

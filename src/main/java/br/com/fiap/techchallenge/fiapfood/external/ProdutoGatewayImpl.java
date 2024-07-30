@@ -13,11 +13,11 @@ import jakarta.persistence.criteria.Root;
 import java.util.List;
 
 
-public class ProdutoGatewayDataMapper extends GenericDaoImpl<ProdutoEntity> implements ProdutoGateway {
+public class ProdutoGatewayImpl extends GenericDaoImpl<ProdutoEntity> implements ProdutoGateway {
 
     private EntityManager entityManager;
 
-    public ProdutoGatewayDataMapper(){
+    public ProdutoGatewayImpl(){
         setClazz(ProdutoEntity.class);
         this.entityManager = (new ConnectionPoolManager()).getConnection().createEntityManager();
         setEntityManager(this.entityManager);

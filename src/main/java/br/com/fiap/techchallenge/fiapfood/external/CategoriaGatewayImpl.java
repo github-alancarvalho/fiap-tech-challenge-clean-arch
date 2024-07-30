@@ -8,9 +8,9 @@ import br.com.fiap.techchallenge.fiapfood.external.entities.CategoriaEntity;
 import java.util.List;
 
 
-public class CategoriaGatewayDataMapper extends GenericDaoImpl<CategoriaEntity> implements CategoriaGateway {
+public class CategoriaGatewayImpl extends GenericDaoImpl<CategoriaEntity> implements CategoriaGateway {
 
-    public CategoriaGatewayDataMapper(){
+    public CategoriaGatewayImpl(){
         setClazz(CategoriaEntity.class);
         setEntityManager((new ConnectionPoolManager()).getConnection().createEntityManager());
     }

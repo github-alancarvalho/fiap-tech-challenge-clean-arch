@@ -3,11 +3,11 @@ package br.com.fiap.techchallenge.fiapfood.config;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.PedidoController;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.ItemPedidoGateway;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.PedidoGateway;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PedidoJsonPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PedidoDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PedidoPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.*;
-import br.com.fiap.techchallenge.fiapfood.external.ItemPedidoGatewayDataMapper;
-import br.com.fiap.techchallenge.fiapfood.external.PedidoGatewayDataMapper;
+import br.com.fiap.techchallenge.fiapfood.external.ItemPedidoGatewayImpl;
+import br.com.fiap.techchallenge.fiapfood.external.PedidoGatewayImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -30,17 +30,17 @@ public class PedidoConfig {
 
     @Bean
     PedidoPresenter getPedidoPresenter() {
-        return new PedidoJsonPresenter();
+        return new PedidoDefaultPresenter();
 
     }
 
     @Bean
     PedidoGateway pedidoRepositoryGateway() {
-        return new PedidoGatewayDataMapper();
+        return new PedidoGatewayImpl();
     }
 
     @Bean
     ItemPedidoGateway itemPedidoRepositoryGateway() {
-        return new ItemPedidoGatewayDataMapper();
+        return new ItemPedidoGatewayImpl();
     }
 }

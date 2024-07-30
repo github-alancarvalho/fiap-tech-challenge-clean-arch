@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.fiapfood.config;
 
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.PagamentoController;
-import br.com.fiap.techchallenge.fiapfood.external.PagamentoGatewayDataMapper;
+import br.com.fiap.techchallenge.fiapfood.external.PagamentoGatewayImpl;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.PagamentoGateway;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoJsonPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.PagamentoPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.PagamentoUseCase;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.PagamentoUseCaseBoundary;
@@ -26,13 +26,13 @@ public class PagamentoConfig {
 
     @Bean
     PagamentoPresenter getPagamentoPresenter(){
-        return new PagamentoJsonPresenter();
+        return new PagamentoDefaultPresenter();
 
     }
 
     @Bean
     PagamentoGateway pagamentoRepositoryGateway() {
-        return new PagamentoGatewayDataMapper();
+        return new PagamentoGatewayImpl();
     }
 
 }

@@ -3,7 +3,7 @@ package br.com.fiap.techchallenge.fiapfood.api;
 
 import br.com.fiap.techchallenge.fiapfood.dto.CategoriaResponse;
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.CategoriaController;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.CategoriaJsonPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.CategoriaDefaultPresenter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +26,7 @@ public class CategoriaApiHandler {
     @Operation(summary = "Buscar todas as categorias", description = "Buscar todas as categorias")
     @GetMapping("/buscarTodasCategorias")
     public List<CategoriaResponse> buscarTodasCategorias(){
-        return categoriaController.buscarTodasCategorias(new CategoriaJsonPresenter());
+        return categoriaController.buscarTodasCategorias(new CategoriaDefaultPresenter());
     }
 
 }

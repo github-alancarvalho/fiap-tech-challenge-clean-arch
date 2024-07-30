@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.fiapfood.config;
 
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.ProdutoController;
-import br.com.fiap.techchallenge.fiapfood.external.ProdutoGatewayDataMapper;
+import br.com.fiap.techchallenge.fiapfood.external.ProdutoGatewayImpl;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.ProdutoGateway;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ProdutoJsonPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ProdutoDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.ProdutoPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.ProdutoUseCase;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.ProdutoUseCaseBoundary;
@@ -25,13 +25,13 @@ public class ProdutoConfig {
 
     @Bean
     ProdutoPresenter getProdutoPresenter(){
-        return new ProdutoJsonPresenter();
+        return new ProdutoDefaultPresenter();
 
     }
 
     @Bean
     ProdutoGateway produtoRepositoryGateway() {
-        return new ProdutoGatewayDataMapper();
+        return new ProdutoGatewayImpl();
     }
 
 }

@@ -1,25 +1,25 @@
 package br.com.fiap.techchallenge.fiapfood.adapters.presenters;
 
-import br.com.fiap.techchallenge.fiapfood.dto.PedidoResponse;
+import br.com.fiap.techchallenge.fiapfood.dto.ProdutoResponse;
 import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-public class PedidoJsonPresenter implements PedidoPresenter{
+public class ProdutoDefaultPresenter implements ProdutoPresenter{
     @Override
-    public PedidoResponse prepararRespostaComSucesso(PedidoResponse pedidoResponse) {
-        return pedidoResponse;
+    public ProdutoResponse prepararRespostaComSucesso(ProdutoResponse produtoResponse) {
+        return produtoResponse;
     }
 
     @Override
-    public List<PedidoResponse> prepararRespostaListaComSucesso(List<PedidoResponse> listPedidoResponse) {
-        return listPedidoResponse;
+    public List<ProdutoResponse> prepararRespostaListaComSucesso(List<ProdutoResponse> listProdutoResponse) {
+        return listProdutoResponse;
     }
 
     @Override
-    public PedidoResponse prepararRespostaVazia() {
+    public ProdutoResponse prepararRespostaVazia() {
         return null;
     }
 
@@ -27,13 +27,14 @@ public class PedidoJsonPresenter implements PedidoPresenter{
     public Boolean prepararRespostaComErroExcluir(FiapFoodException err) {
         throw new ResponseStatusException(HttpStatus.CONFLICT, err.getMessage());
     }
+
     @Override
-    public PedidoResponse prepararRespostaSemSucesso(FiapFoodException err) {
+    public ProdutoResponse prepararRespostaSemSucesso(FiapFoodException err) {
         throw new ResponseStatusException(HttpStatus.CONFLICT, err.getMessage());
     }
 
     @Override
-    public List<PedidoResponse> prepararRespostaListaSemSucesso(FiapFoodException err) {
+    public List<ProdutoResponse> prepararRespostaListaSemSucesso(FiapFoodException err) {
         throw new ResponseStatusException(HttpStatus.CONFLICT, err.getMessage());
     }
 }

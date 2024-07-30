@@ -9,7 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-public class PagamentoJsonPresenter implements PagamentoPresenter{
+public class PagamentoDefaultPresenter implements PagamentoPresenter{
     @Override
     public PagamentoResponse prepararRespostaComSucesso(PagamentoResponse pagamentoResponse) {
         return pagamentoResponse;

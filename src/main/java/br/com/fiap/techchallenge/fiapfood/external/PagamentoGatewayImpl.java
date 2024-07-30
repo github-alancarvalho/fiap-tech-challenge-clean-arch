@@ -34,13 +34,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class PagamentoGatewayDataMapper extends GenericDaoImpl<PagamentoEntity> implements PagamentoGateway {
+public class PagamentoGatewayImpl extends GenericDaoImpl<PagamentoEntity> implements PagamentoGateway {
 
     private String mercadoPagoAccessToken = System.getenv("TOKEN_MERCADO_PAGO");
     private static final String MERCADO_PAGO_API = "https://api.mercadopago.com/v1";
     private EntityManager entityManager;
 
-    public PagamentoGatewayDataMapper() {
+    public PagamentoGatewayImpl() {
         setClazz(PagamentoEntity.class);
         this.entityManager = (new ConnectionPoolManager()).getConnection().createEntityManager();
         setEntityManager(this.entityManager);

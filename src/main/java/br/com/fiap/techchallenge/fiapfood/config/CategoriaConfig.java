@@ -1,9 +1,9 @@
 package br.com.fiap.techchallenge.fiapfood.config;
 
 import br.com.fiap.techchallenge.fiapfood.adapters.controllers.CategoriaController;
-import br.com.fiap.techchallenge.fiapfood.external.CategoriaGatewayDataMapper;
+import br.com.fiap.techchallenge.fiapfood.external.CategoriaGatewayImpl;
 import br.com.fiap.techchallenge.fiapfood.adapters.gateways.CategoriaGateway;
-import br.com.fiap.techchallenge.fiapfood.adapters.presenters.CategoriaJsonPresenter;
+import br.com.fiap.techchallenge.fiapfood.adapters.presenters.CategoriaDefaultPresenter;
 import br.com.fiap.techchallenge.fiapfood.adapters.presenters.CategoriaPresenter;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.CategoriaUseCase;
 import br.com.fiap.techchallenge.fiapfood.core.usecases.CategoriaUseCaseBoundary;
@@ -25,13 +25,13 @@ public class CategoriaConfig {
 
     @Bean
     CategoriaPresenter getCategoriaPresenter(){
-        return new CategoriaJsonPresenter();
+        return new CategoriaDefaultPresenter();
 
     }
 
     @Bean
     CategoriaGateway categoriaRepositoryGateway() {
-        return new CategoriaGatewayDataMapper();
+        return new CategoriaGatewayImpl();
     }
 
 
