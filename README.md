@@ -25,7 +25,7 @@ Desafio desenvolvido com DDD, Docker e Arquitetura Hexagonal para o curso de Sof
 - Kubectl
 - Conta no mercado pago para simulação dos pagamentos
 
-## Como rodar
+## Como rodar localmente
 Clone este repositório
 ```
 bash
