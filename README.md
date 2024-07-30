@@ -50,7 +50,6 @@ $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
   kubectl apply -f 06-aws-api-deployment.yaml
   kubectl apply -f 07-aws-api-service.yaml
   kubectl apply -f 08-HPA.yaml
-  kubectl apply -f high-availability.yaml
   kubectl apply -f metrics.yaml
 
 - No Swagger ou no postman, rodar na sequência:
