@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: api
+  name: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: fiapfood
+          image: dockerhubalancarvalho/fiapfood:1.6
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 1m
+          livenessProbe:
+            exec:
+              command:
+                - ls
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: api-config
+      restartPolicy: Always

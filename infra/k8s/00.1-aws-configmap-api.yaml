@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  MARIADB_DATABASE: tech-challenge
+  MARIADB_DATABASE_ENDPOINT: svc-mariadb-techchallenge:3306
+  MARIADB_PASSWORD: fiap
+  MARIADB_USER: fiap
+  # Inserir o token do Mercado Pago
+  TOKEN_MERCADO_PAGO: [TOKEN_MERCADO_PAGO]
+  # caminho para receber o retorno do mercado livre
+  NOTIFICATION_MP_URL: [PATH-PARA-RECEBER-RETORNO-MERCADO-PAGO]/prd/pagamento

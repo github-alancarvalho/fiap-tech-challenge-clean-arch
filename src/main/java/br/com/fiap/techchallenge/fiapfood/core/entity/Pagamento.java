@@ -1,8 +1,12 @@
 package br.com.fiap.techchallenge.fiapfood.core.entity;
 
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -38,6 +42,20 @@ public class Pagamento {
                 .build();
 
     }
+
+    public Pagamento confirmarPagamento() {
+        if(!status.equals(StatusPagamento.APROVADO.toString()))
+            throw new FiapFoodException("Pagamento não consta como aprovado até o momento");
+
+        return Pagamento.builder()
+                .idPagamento(idPagamento)
+                .pedido(pedido)
+                .status(status)
+                .valor(valor)
+                .cartaoCredito(cartaoCredito)
+                .build();
+    }
+
 
     public Long getIdPagamento() {
         return idPagamento;

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mariadb-techchallenge
+  name: mariadb-techchallenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb-techchallenge
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mariadb-techchallenge
+    spec:
+      containers:
+        - envFrom:
+            - configMapRef:
+                name: mariadb-techchallenge-config
+          image: dockerhubalancarvalho/mariadb-fiapfood:1.0
+          name: mariadb-techchallenge
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+      restartPolicy: Always

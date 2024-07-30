@@ -1,4 +1,4 @@
-package br.com.fiap.techchallenge.fiapfood;
+package br.com.fiap.techchallenge.fiapfood.core.entity;
 
 
 import br.com.fiap.techchallenge.fiapfood.core.ICategoria;

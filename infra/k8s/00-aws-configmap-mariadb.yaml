@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb-techchallenge-config
+data:
+  MARIADB_DATABASE: tech-challenge
+  MARIADB_PASSWORD: fiap
+  MARIADB_ROOT_PASSWORD: rootroot
+  MARIADB_USER: fiap

@@ -1,6 +1,8 @@
 package br.com.fiap.techchallenge.fiapfood.core.entity;
 
+import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPagamento;
 import br.com.fiap.techchallenge.fiapfood.core.entity.valueobject.StatusPedido;
+import br.com.fiap.techchallenge.fiapfood.exceptions.FiapFoodException;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +35,44 @@ public class Pedido {
         this.status = status;
         this.data = data;
         this.listItens = listItens;
+    }
+
+    public Pedido confirmarPagamento(Pagamento pagamento) {
+        if (pagamento == null) {
+            throw new FiapFoodException("Pagamento nulo");
+        }
+        if (pagamento.getIdPagamento() == null) {
+            throw new FiapFoodException("Pagamento deve estar gravado");
+        }
+        if (status != null) {
+            throw new FiapFoodException("Status invalido para pagamento: " + status);
+        }
+        if (pagamento.getStatus() == StatusPagamento.EM_PROCESSAMENTO.toString()) {
+            throw new FiapFoodException("Pagamento em processamento");
+        }
+
+        return Pedido.builder().id(id).status(status).cliente(cliente).listItens(listItens).data(LocalDateTime.now()).build();
+    }
+
+    public Pedido validar() {
+        if (status != StatusPedido.RECEBIDO) {
+            throw new FiapFoodException("Status invalido para validação do pedido: " + status);
+        }
+        return Pedido.builder().id(id).status(status).cliente(cliente).listItens(listItens).data(LocalDateTime.now()).build();
+    }
+
+    public Pedido setPronto() {
+        if (status != StatusPedido.EM_PREPARACAO) {
+            throw new FiapFoodException("Status invalido para mudar para Pronto: " + status);
+        }
+        return Pedido.builder().id(id).status(status).cliente(cliente).listItens(listItens).data(LocalDateTime.now()).build();
+    }
+
+    public Pedido finalizar() {
+        if (status != StatusPedido.PRONTO) {
+            throw new FiapFoodException("Status invalido para finalizar: " + status);
+        }
+        return Pedido.builder().id(id).status(status).cliente(cliente).listItens(listItens).data(LocalDateTime.now()).build();
     }
 
     public Long getId() {
