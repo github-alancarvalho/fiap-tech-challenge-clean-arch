@@ -123,7 +123,7 @@ public class PagamentoGatewayImpl extends GenericDaoImpl<PagamentoEntity> implem
                         .paymentMethodId("visa")
                         .token(token)
                         .installments(1)
-//                        .notificationUrl(System.getenv("NOTIFICATION_MP_URL"))
+                        .notificationUrl(System.getenv("NOTIFICATION_MP_URL"))
                         .payer(
                                 PaymentPayerRequest.builder()
                                         .email(pagamento2.getCliente().getEmail())
