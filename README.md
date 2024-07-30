@@ -25,7 +25,7 @@ Desafio desenvolvido com DDD, Docker e Arquitetura Hexagonal para o curso de Sof
 - Kubectl
 - Conta no mercado pago para simulação dos pagamentos
 
-## Como rodar localmente
+## Como rodar?
 Clone este repositório
 ```
 bash
@@ -34,9 +34,14 @@ $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
 
 - Abra o projeto na IDE de sua preferência
 - Configure as varíaveis de ambiente dos arquivos .yaml localizados na pasta infra/k8s
+  00-aws-configmap-mariadb.yaml
+  00.1-aws-configmap-api.yaml
+  02-aws-pv.yaml --> Configurar o volume
 
 - No terminal
   cd infra/k8s
+  kubectl apply -f 00-aws-configmap-mariadb.yaml
+  kubectl apply -f 00.1-aws-configmap-api.yaml
   kubectl apply -f 01-aws-storage-class.yaml
   kubectl apply -f 02-aws-pv.yaml
   kubectl apply -f 03-aws-pvc.yaml
