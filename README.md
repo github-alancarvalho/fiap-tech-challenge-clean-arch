@@ -207,6 +207,9 @@ Etapas do Progresso do Pedido:
 
 ![FiapFood vpd](https://github.com/user-attachments/assets/7339fda5-6333-458d-8143-34e0146bb5e7)
 
+![clean arch diagram drawio](https://github.com/user-attachments/assets/ea383f09-8879-4bc7-ace1-1597ed33a064)
+
+
 ### Link do vídeo demonstrando a arquitetura na AWS e a aplicação rodando
 https://youtu.be/9V6KqR_jfvk
 
