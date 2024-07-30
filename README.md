@@ -47,7 +47,13 @@ $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
   kubectl apply -f 08-HPA.yaml
   kubectl apply -f high-availability.yaml
   kubectl apply -f metrics.yaml
-  
+
+- No Swagger ou no postman, rodar na sequência:
+ - /api/v1/Produtos/inserir  -->> Cadastrar os produtos que deseja 
+ - /api/v1/Clientes/inserir  --> Inclui um cliente 
+ - /api/v1/Pedidos/checkout  --> Registrar um pedido com os dados do cartão de crédito para pagamento.
+ - /api/v1/Pedidos/buscarPedidosEmAberto
+ OBS: Essa sequência de execução foi demonstrada no vídeo, com a aplicação rodando na AWS.
 
 ```
 ## Problema
