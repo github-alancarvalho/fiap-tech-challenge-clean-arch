@@ -4,7 +4,7 @@ networks:
 
 services:
   mariadb-techchallenge:
-    image: dockerhubalancarvalho/mariadb-fiapfood:1.0
+    image: dockerhubalancarvalho/mariadb-fiapfood:2.0
     container_name: mariadb-techchallenge
     volumes:
       - mariadbnew_data:/var/lib/mariadbnew

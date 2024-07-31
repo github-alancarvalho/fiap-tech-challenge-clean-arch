@@ -20,7 +20,7 @@ spec:
         - envFrom:
             - configMapRef:
                 name: mariadb-techchallenge-config
-          image: dockerhubalancarvalho/mariadb-fiapfood:1.0
+          image: dockerhubalancarvalho/mariadb-fiapfood:2.0
           name: mariadb-techchallenge
           ports:
             - containerPort: 3306
