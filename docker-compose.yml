@@ -4,7 +4,7 @@ networks:
 
 services:
   mariadb-techchallenge:
-    image: mariadb:11.1.3
+    image: dockerhubalancarvalho/mariadb-fiapfood:1.0
     container_name: mariadb-techchallenge
     volumes:
       - mariadbnew_data:/var/lib/mariadbnew
@@ -36,7 +36,7 @@ services:
       - MARIADB_DATABASE=tech-challenge
       - MARIADB_USER=fiap
       - MARIADB_PASSWORD=fiap
-      - TOKEN_MERCADO_PAGO=TEST-1882441822874146-071123-2bd1432e98f1efc3e1ff3a4ae6ecd79e-1229643287
+      - TOKEN_MERCADO_PAGO=TEST-XXXXX
       - NOTIFICATION_MP_URL=http://awsapp.com/api/v1/Pagamentos
     ports:
       - "8080:8080"
