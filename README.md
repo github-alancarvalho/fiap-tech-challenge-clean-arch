@@ -29,11 +29,11 @@ Desafio desenvolvido com DDD, Docker e Arquitetura Hexagonal para o curso de Sof
 Clone este repositório
 ```
 bash
-$ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
+$ git clone https://github.com/github-alancarvalho/fiap-tech-challenge-clean-arch.git
 
 
 - Abra o projeto na IDE de sua preferência
-- Configure as varíaveis de ambiente dos arquivos .yaml localizados na pasta infra/k8s
+- Configure as variáveis de ambiente dos arquivos .yaml localizados na pasta infra/k8s
   00-aws-configmap-mariadb.yaml
   00.1-aws-configmap-api.yaml
   02-aws-pv.yaml --> Configurar o volume
@@ -51,6 +51,28 @@ $ git clone https://github.com/github-alancarvalho/fiap-tech-challenge.git
   kubectl apply -f 07-aws-api-service.yaml
   kubectl apply -f 08-HPA.yaml
   kubectl apply -f metrics.yaml
+
+- No Swagger ou no postman, rodar na sequência:
+ - /api/v1/Produtos/inserir  -->> Cadastrar os produtos que deseja 
+ - /api/v1/Clientes/inserir  --> Inclui um cliente 
+ - /api/v1/Pedidos/checkout  --> Registrar um pedido com os dados do cartão de crédito para pagamento.
+ - /api/v1/Pedidos/buscarPedidosEmAberto
+ OBS: Essa sequência de execução foi demonstrada no vídeo, com a aplicação rodando na AWS.
+```
+
+
+## Como rodar localmente?
+Clone este repositório
+```
+bash
+
+$ git clone https://github.com/github-alancarvalho/fiap-tech-challenge-clean-arch.git
+
+- Abra o projeto na IDE de sua preferência
+- Configure as variáveis de ambiente do arquivo docker-compose.yml
+
+No terminal
+- docker compose up
 
 - No Swagger ou no postman, rodar na sequência:
  - /api/v1/Produtos/inserir  -->> Cadastrar os produtos que deseja 
